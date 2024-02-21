@@ -1,0 +1,166 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<header [class.dark]="isDark">
+    <nav
+        #navbar
+        class="bg-background/95 bg-secondary left-0 right-0 text-cream-75 shadow-sm backdrop-blur dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-cream-75 dark:border-gray-600 mix-blend-hard-light">
+        <div
+            class="max-w-screen-1xl flex flex-wrap items-center justify-center mx-auto p-4 relative">
+            <a
+                [routerLink]="['']"
+                class="flex items-center space-x-3 rtl:space-x-reverse absolute left-8 xl:left-0">
+                <img
+                    src="assets/logo_sf.png"
+                    class="h-9"
+                    alt="Sarah Fleury Logo" />
+            </a>
+            <div
+                class="flex justify-end items-center md:order-2 space-x-3 md:space-x-0 w-full">
+                <button
+                    data-collapse-toggle="navbar-sticky"
+                    type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-cream-75 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-sticky"
+                    aria-expanded="false">
+                    <svg
+                        class="w-5 h-5"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 17 14">
+                        <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+            </div>
+            <div
+                class="hidden items-center justify-center w-full md:flex md:w-auto md:order-1"
+                id="navbar-sticky">
+                <ul
+                    class="flex flex-col mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    <li>
+                        <a
+                            href="#home"
+                            #navbarLinks
+                            [routerLink]="['']"
+                            class="block py-2 px-3 text-bancha-800 rounded font-semibold md:bg-transparent md:p-0 hover:text-bancha-900 transition-colors ease-in-out duration-150"
+                            aria-current="page"
+                            routerLinkActive="text-bancha-900 !font-semibold"
+                            >Accueil</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="#projects"
+                            #navbarLinks
+                            class="block py-2 px-3 text-bancha-800 rounded font-semibold md:p-0 hover:text-bancha-900 transition-colors ease-in-out duration-150"
+                            routerLinkActive="text-bancha-900 font-extrabold"
+                            >Projets</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="#skills"
+                            #navbarLinks
+                            class="block py-2 px-3 text-bancha-800 rounded font-semibold md:p-0 hover:text-bancha-900 transition-colors ease-in-out duration-150"
+                            routerLinkActive="text-bancha-900 font-extrabold"
+                            >Compétences</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="#about-us"
+                            #navbarLinks
+                            class="block py-2 px-3 text-bancha-800 rounded font-semibold md:p-0 hover:text-bancha-900 transition-colors ease-in-out duration-150"
+                            routerLinkActive="text-bancha-900 font-extrabold"
+                            >A Propos</a
+                        >
+                    </li>
+                </ul>
+            </div>
+            <!-- ACTIONS -->
+        </div>
+    </nav>
+</header>
+
+@if (isHome) {
+    <section class="bg-bancha-500 dark:bg-gray-900 h-screen" id="home">
+        <div
+            class="grid max-w-screen-1xl px-16 py-32 mx-auto lg:gap-8 xl:gap-6 lg:py-16 lg:grid-cols-12 h-full">
+            <div class="mr-auto place-self-center lg:col-span-6">
+                <h1
+                    class="max-w-2xl mb-4 text-5xl leading-none md:text-6xl xl:text-7xl font-satista dark:text-white text-cream-75">
+                    Sarah Fleury
+                </h1>
+                <p
+                    class="max-w-2xl mb-6 font-light text-cream-75 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+                    Architecte d’intérieur diplômée de l’ENSAAMA Oliviers de
+                    Serres depuis 2021. Je travaille en tant que cheffe de
+                    projet chez Camille Hermand Architectures depuis deux ans.
+                    J’ai pu y mener une dizaine de projets résidentiels allant
+                    de petites rénovations partielles d’appartements à des
+                    rénovations complètes de maisons.
+                </p>
+            </div>
+            <div class="lg:mt-0 lg:col-span-6 lg:place-self-center">
+                <img
+                    class="object-contain w-full h-full rounded-lg"
+                    ngSrc="assets/moodboard.png"
+                    height="500"
+                    width="500"
+                    priority
+                    alt="Moodboard" />
+            </div>
+            <!-- Indication to go down section -->
+            <div
+                class="absolute bottom-10 flex flex-col items-center justify-center right-1/2 left-1/2 invisible sm:visible">
+                <div class="animate-bounce">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-7 w-7 text-cream-75 hover:text-primary-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<router-outlet></router-outlet>
+
+<footer class="p-4 bg-cream-75 sm:p-6 dark:bg-gray-800">
+    <div class="max-w-screen-1xl mx-auto">
+        <hr
+            class="my-6 border-bancha-800 sm:mx-auto dark:border-gray-700 lg:my-8" />
+        <div class="flex items-center justify-between">
+            <span
+                class="text-sm text-bancha-800 sm:text-center dark:text-gray-400"
+                >© {{ currentYear }}
+                <a href="/" class="hover:underline">Sarah Fleury</a>.
+            </span>
+            <div class="flex space-x-6">
+                <a class="text-bancha-800 dark:text-gray-400">
+                    Mention légales
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
