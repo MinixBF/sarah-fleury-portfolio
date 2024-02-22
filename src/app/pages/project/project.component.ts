@@ -1,4 +1,4 @@
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule, IMAGE_CONFIG, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DataService, Projet } from 'src/app/core/data.service';
@@ -7,10 +7,20 @@ import { DataService, Projet } from 'src/app/core/data.service';
     selector: 'project',
     standalone: true,
     imports: [CommonModule, NgOptimizedImage, RouterModule],
+    providers: [
+        {
+            provide: IMAGE_CONFIG,
+            useValue: {
+                breakpoints: [
+                    16, 48, 96, 128, 384, 640, 750, 828, 1080, 1200, 1920,
+                ],
+            },
+        },
+    ],
     template: `
         <section class="bg-cream-75 dark:bg-gray-800">
             <div
-                class="flex flex-col lg:grid lg:grid-cols-2 max-w-screen-1xl px-16 py-24 mx-auto gap-4 lg:gap-8 relative">
+                class="flex flex-col lg:grid lg:grid-cols-2 max-w-screen-1xl px-8 py-24 mx-auto gap-4 lg:gap-8 relative">
                 <a
                     [routerLink]="['', '#projects']"
                     class="text-xl text-bancha-800 dark:text-white font-semibold dark:font-normal whitespace-nowrap flex items-center gap-2 underline col-span-2">
@@ -29,10 +39,17 @@ import { DataService, Projet } from 'src/app/core/data.service';
                     Retour aux projets
                 </a>
                 <img
-                    [ngSrc]="project.imagePath + 'cover.jpg'"
-                    height="2000"
-                    width="4444"
-                    class="object-fill rounded-lg h-full"
+                    [srcset]="
+                        project.imagePath +
+                        'coverx1.jpg 1x,' +
+                        project.imagePath +
+                        'coverx2.jpg 2x,' +
+                        project.imagePath +
+                        'coverx3.jpg 3x'
+                    "
+                    loading="lazy"
+                    priority
+                    class="rounded-lg h-full"
                     alt="Sarah Fleury portrait" />
 
                 <div class="flex flex-col gap-4">
@@ -66,8 +83,11 @@ import { DataService, Projet } from 'src/app/core/data.service';
                         Existant
                     </span>
                     <img
-                        [src]="project.imagePath + existingPath + '.png'"
+                        [ngSrc]="project.imagePath + existingPath + '.png'"
                         loading="lazy"
+                        width="4795"
+                        height="2507"
+                        sizes="50vw"
                         class="object-cover" />
                 </div>
 
@@ -77,8 +97,11 @@ import { DataService, Projet } from 'src/app/core/data.service';
                         Projet
                     </span>
                     <img
-                        [src]="project.imagePath + proposalPath + '.png'"
+                        [ngSrc]="project.imagePath + proposalPath + '.png'"
                         loading="lazy"
+                        sizes="50vw"
+                        width="4771"
+                        height="2475"
                         class="object-cover" />
                 </div>
             </div>
@@ -88,21 +111,24 @@ import { DataService, Projet } from 'src/app/core/data.service';
                 class="grid grid-cols-6 gap-4 max-w-screen-1xl px-4 py-8 mx-auto">
                 @for (item of project.imagesGrid; track $index) {
                     <img
-                        [src]="project.imageGridPath + item.path"
+                        [ngSrc]="project.imageGridPath + item.path"
                         class="object-cover h-full rounded-lg"
                         loading="lazy"
+                        sizes="50vw"
+                        width="4771 "
+                        height="2475 "
                         [ngClass]="item.class ?? 'col-span-3'"
                         alt="{{ item.alt }}" />
                 }
             </div>
 
             <!-- Previous Projet - Back to top of project - Next Projet -->
-            <div class="max-w-screen-1xl mx-auto px-4">
+            <div class="max-w-screen-1xl px-4">
                 <div
                     class="flex items-center justify-between w-full h-12  bg-bancha-500 dark:bg-gray-900 rounded-lg">
                     <a
                         [routerLink]="'/projects/' + project.nextProject"
-                        class="pl-32 text-cream-75">
+                        class="pl-4 sm:pl-32 text-cream-75 underline">
                         Projet précédent
                     </a>
 
@@ -121,10 +147,9 @@ import { DataService, Projet } from 'src/app/core/data.service';
                                 d="M5 10l7-7m0 0l7 7m-7-7v18" />
                         </svg>
                     </a>
-
                     <a
                         [routerLink]="'/projects/' + project.previousProject"
-                        class="pr-32 text-cream-75">
+                        class="pr-4 sm:pr-32 text-cream-75 underline">
                         Projet suivant
                     </a>
                 </div>

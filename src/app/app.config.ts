@@ -25,11 +25,10 @@ export const appConfig: ApplicationConfig = {
     providers: [
         provideRouter(
             routes,
-
             withComponentInputBinding(),
             withViewTransitions(),
-            withInMemoryScrolling(scrollConfig),
-            withRouterConfig(routerConfig)
+            withRouterConfig(routerConfig),
+            withInMemoryScrolling(scrollConfig)
         ),
     ],
 };
