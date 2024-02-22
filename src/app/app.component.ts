@@ -83,6 +83,7 @@ export class AppComponent implements OnInit {
     private router = inject(Router);
 
     @ViewChildren('navbarLinks') navbarLinks!: QueryList<ElementRef>;
+    @ViewChild('navbarToggle') navbarToggle!: ElementRef;
 
     @HostListener('window:scroll', ['$event'])
     onWindowScroll(e: Event) {
@@ -92,20 +93,6 @@ export class AppComponent implements OnInit {
         // Si on est sur la page "projets" mettre le texte en bancha-800 seulement peut importe la position
         if (this.router.url.startsWith('/projects')) {
             return;
-        }
-
-        if (scroll * 1.03 < window.innerHeight) {
-            this.navbarLinks.forEach((element: ElementRef) => {
-                element.nativeElement.classList.add('!text-cream-75');
-                element.nativeElement.classList.add('hover:!text-redwood-100');
-            });
-        } else {
-            this.navbarLinks.forEach((element: ElementRef) => {
-                element.nativeElement.classList.remove('!text-cream-75');
-                element.nativeElement.classList.remove(
-                    'hover:!text-redwood-100'
-                );
-            });
         }
     }
 
@@ -118,23 +105,15 @@ export class AppComponent implements OnInit {
                 takeUntilDestroyed(this.destroyRef)
             )
             .subscribe(event => {
-                console.log('event', event);
                 const isHome =
                     (event as NavigationEnd).url === '/' ||
                     (event as NavigationEnd).url.startsWith('/#') ||
                     (event as NavigationEnd).url.startsWith('/%23');
                 this.isHome = isHome;
-
-                if (isHome) {
-                    this.navbarLinks.forEach((element: ElementRef) => {
-                        element.nativeElement.classList.add('!text-cream-75');
-                        element.nativeElement.classList.add(
-                            'hover:!text-redwood-100'
-                        );
-                    });
-                }
             });
 
         this.isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
+
+    toggleNavbar() {}
 }

@@ -44,6 +44,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
                     @for (image of skillsSelected.imagesGrid; track $index) {
                         <img
                             [src]="skillsSelected.imagesPath + image.path"
+                            loading="lazy"
                             class="object-cover w-full h-full rounded-lg"
                             [ngClass]="image.class ?? ''"
                             alt="" />

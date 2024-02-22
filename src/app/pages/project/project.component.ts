@@ -1,11 +1,6 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import {
-    ActivatedRoute,
-    RouteReuseStrategy,
-    Router,
-    RouterModule,
-} from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DataService, Projet } from 'src/app/core/data.service';
 
 @Component({
@@ -72,6 +67,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
                     </span>
                     <img
                         [src]="project.imagePath + existingPath + '.png'"
+                        loading="lazy"
                         class="object-cover" />
                 </div>
 
@@ -82,6 +78,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
                     </span>
                     <img
                         [src]="project.imagePath + proposalPath + '.png'"
+                        loading="lazy"
                         class="object-cover" />
                 </div>
             </div>
@@ -93,6 +90,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
                     <img
                         [src]="project.imageGridPath + item.path"
                         class="object-cover h-full rounded-lg"
+                        loading="lazy"
                         [ngClass]="item.class ?? 'col-span-3'"
                         alt="{{ item.alt }}" />
                 }
@@ -150,9 +148,6 @@ export class ProjectComponent {
     ) {}
 
     ngOnInit() {
-        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-        this.router.onSameUrlNavigation = 'reload';
-
         this.project =
             this.projectService.getProject(
                 this.route.snapshot.paramMap.get('id') as string

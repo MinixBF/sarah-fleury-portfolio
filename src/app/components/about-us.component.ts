@@ -32,10 +32,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
                         </p>
                         <div class="flex justify-center text-center">
                             <a
-                                href="assets/me.jpg"
-                                path_to_file="assets/me.jpg"
+                                href="assets/CV_FLEURY.pdf"
+                                path_to_file="assets/CV_FLEURY.pdf"
                                 target="_blank"
-                                download="me.jpg"
+                                download="CV_Sarah_FLEURY.pdf"
                                 title="Télécharger mon CV"
                                 class="flex items-center justify-center p-2 px-4 w-fit text-cream-75 bg-bancha-600 rounded-lg cursor-pointer mt-8
                           hover:bg-bancha-800 transition-colors duration-300
@@ -48,6 +48,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
                     </div>
                     <div class="flex flex-col items-center">
                         <img
+                            loading="lazy"
                             src="assets/me.jpg"
                             class="object-cover rounded-lg sm:w-[80em]"
                             alt="Sarah Fleury portrait" />
