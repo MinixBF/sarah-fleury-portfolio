@@ -41,11 +41,11 @@ import { DataService, Projet } from 'src/app/core/data.service';
                 <img
                     [srcset]="
                         project.imagePath +
-                        'coverx1.jpg 1x,' +
+                        'cover1x.jpg 1x,' +
                         project.imagePath +
-                        'coverx2.jpg 2x,' +
+                        'cover2x.jpg 2x,' +
                         project.imagePath +
-                        'coverx3.jpg 3x'
+                        'cover3x.jpg 3x'
                     "
                     loading="lazy"
                     priority
@@ -123,7 +123,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
             </div>
 
             <!-- Previous Projet - Back to top of project - Next Projet -->
-            <div class="max-w-screen-1xl px-4">
+            <div class="max-w-screen-1xl mx-auto px-4">
                 <div
                     class="flex items-center justify-between w-full h-12  bg-bancha-500 dark:bg-gray-900 rounded-lg">
                     <a
