@@ -13,6 +13,7 @@ import {
     HostListener,
     OnInit,
     QueryList,
+    Signal,
     ViewChild,
     ViewChildren,
     inject,
@@ -48,7 +49,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
             state(
                 'false',
                 style({
-                    height: `${window?.innerWidth < 768 ? '8%' : '5.5%'}`,
+                    height: '7%',
                 })
             ),
             transition('false => true', animate('300ms ease-in')),
@@ -73,6 +74,7 @@ export class AppComponent implements OnInit {
     isHome: boolean = true;
     navId: string | null = null;
     toggleNavbar: boolean = false;
+    isMobile: Signal<boolean> = signal(window.innerWidth < 768);
 
     navBar = [
         { name: 'Accueil', scrollTo: 'home' },
