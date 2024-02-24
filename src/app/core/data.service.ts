@@ -209,11 +209,13 @@ export class DataService {
 
                 {
                     path: 'sdb_parent.jpg',
-                    alt: 'Salle de bain parent',
+                    alt: 'Salle de bain parent ',
+                    class: 'object-[39%]',
                 },
                 {
                     path: 'wc.jpg',
                     alt: 'Toilette',
+                    class: 'object-[39%]',
                 },
             ],
         },
@@ -233,6 +235,7 @@ export class DataService {
         return this.projets.map(projet => {
             return {
                 title: projet.title,
+                id: projet.id,
                 link: `/projects/${projet.id}`,
                 coverImagePath: projet.imagePath + 'couverture.jpg',
                 shortDesc: projet.shortDesc,

@@ -4,8 +4,6 @@ import {
     style,
     transition,
     animate,
-    query,
-    stagger,
 } from '@angular/animations';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import {
@@ -17,7 +15,6 @@ import {
     QueryList,
     ViewChild,
     ViewChildren,
-    createPlatform,
     inject,
     signal,
 } from '@angular/core';
@@ -28,7 +25,6 @@ import {
     RouterOutlet,
 } from '@angular/router';
 import { filter } from 'rxjs';
-
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -36,35 +32,33 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     standalone: true,
     templateUrl: './app.component.html',
     imports: [CommonModule, RouterOutlet, RouterModule, NgOptimizedImage],
+    host: {
+        class: 'bg-cream-75 dark:bg-gray-800 h-full flex flex-col',
+    },
     animations: [
-        trigger('header', [
-            transition(':enter', [
-                query(
-                    '*',
-                    style({ opacity: 0, transform: 'translateY(-15%)' })
-                ),
-                query(
-                    '*',
-                    stagger('300ms', [
-                        animate(
-                            '.3s ease-in',
-                            style({ opacity: 1, transform: 'translateY(0)' })
-                        ),
-                    ])
-                ),
-            ]),
+        // Animation for the header when the toogleNavbar is true
+        // Transiton height from fit-content to 100vh
+        trigger('toggleNavbar', [
+            state(
+                'true',
+                style({
+                    height: '100%',
+                })
+            ),
+            state(
+                'false',
+                style({
+                    height: `${window?.innerWidth < 768 ? '8%' : '5.5%'}`,
+                })
+            ),
+            transition('false => true', animate('300ms ease-in')),
+            transition('true => false', animate('300ms ease-out')),
         ]),
+
         trigger('fadeIn', [
             transition(':enter', [
-                style(true ? { opacity: 0, height: 0 } : { opacity: 0 }),
-                animate(
-                    200,
-                    style(
-                        true
-                            ? { opacity: 1, height: 'fit-content' }
-                            : { opacity: 1 }
-                    )
-                ),
+                style({ opacity: 0 }),
+                animate('300ms', style({ opacity: 1 })),
             ]),
         ]),
     ],
@@ -76,25 +70,22 @@ export class AppComponent implements OnInit {
     skillCount = signal(0);
 
     isDark!: boolean;
-
     isHome: boolean = true;
+    navId: string | null = null;
+    toggleNavbar: boolean = false;
+
+    navBar = [
+        { name: 'Accueil', scrollTo: 'home' },
+        { name: 'Projets', scrollTo: 'projects' },
+        { name: 'Compétences', scrollTo: 'skills' },
+        { name: 'A propos', scrollTo: 'about-us' },
+    ];
 
     private destroyRef = inject(DestroyRef);
     private router = inject(Router);
 
     @ViewChildren('navbarLinks') navbarLinks!: QueryList<ElementRef>;
     @ViewChild('navbarToggle') navbarToggle!: ElementRef;
-
-    @HostListener('window:scroll', ['$event'])
-    onWindowScroll(e: Event) {
-        // After 100vh scroll, show the navbar
-        const scroll = window.scrollY;
-
-        // Si on est sur la page "projets" mettre le texte en bancha-800 seulement peut importe la position
-        if (this.router.url.startsWith('/projects')) {
-            return;
-        }
-    }
 
     ngOnInit(): void {
         // If router is home page display hero section
@@ -105,6 +96,17 @@ export class AppComponent implements OnInit {
                 takeUntilDestroyed(this.destroyRef)
             )
             .subscribe(event => {
+                if (this.navId !== null) {
+                    const element = document.getElementById(this.navId);
+                    setTimeout(() => {
+                        if (element) {
+                            console.log('scrolling to', this.navId);
+                            element.scrollIntoView({ behavior: 'smooth' });
+                            this.navId = null;
+                        }
+                    }, 200);
+                }
+
                 const isHome =
                     (event as NavigationEnd).url === '/' ||
                     (event as NavigationEnd).url.startsWith('/#') ||
@@ -115,5 +117,18 @@ export class AppComponent implements OnInit {
         this.isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
 
-    toggleNavbar() {}
+    scrollTo(id: string | undefined) {
+        if (id === undefined) {
+            return;
+        }
+
+        const element = document.getElementById(id);
+        if (element) {
+            console.log('scrolling to', id);
+            element.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            this.router.navigate(['']);
+            this.navId = id;
+        }
+    }
 }

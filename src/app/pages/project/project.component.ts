@@ -18,15 +18,15 @@ import { DataService, Projet } from 'src/app/core/data.service';
         },
     ],
     template: `
-        <section class="bg-cream-75 dark:bg-gray-800">
+        <section class="bg-cream-75 dark:bg-gray-800" #projects>
             <div
-                class="flex flex-col lg:grid lg:grid-cols-2 max-w-screen-1xl px-8 py-24 mx-auto gap-4 lg:gap-8 relative">
+                class="relative mx-auto flex max-w-screen-1xl flex-col gap-4 px-8 py-24 lg:grid lg:grid-cols-2 lg:gap-8">
                 <a
                     [routerLink]="['', '#projects']"
-                    class="text-xl text-bancha-800 dark:text-white font-semibold dark:font-normal whitespace-nowrap flex items-center gap-2 underline col-span-2">
+                    class="col-span-2 flex items-center gap-2 whitespace-nowrap text-lg font-semibold text-bancha-800 underline hover:text-bancha-900 dark:font-normal dark:text-white">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6 text-bancha-600 hover:text-bancha-800 dark:text-white dark:hover:text-white"
+                        class="h-5 w-5 text-bancha-800 hover:text-bancha-900 dark:text-white dark:hover:text-white"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -49,13 +49,13 @@ import { DataService, Projet } from 'src/app/core/data.service';
                     "
                     loading="lazy"
                     priority
-                    class="rounded-lg h-full"
+                    class="h-full rounded-lg"
                     alt="Sarah Fleury portrait" />
 
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col gap-4">
                         <h2
-                            class="text-5xl font-satista text-bancha-800 dark:text-white font-semibold dark:font-normal whitespace-nowrap">
+                            class="whitespace-nowrap font-satista text-5xl font-semibold text-bancha-800 dark:font-normal dark:text-white">
                             {{ project.title }}
                         </h2>
                         <span
@@ -64,22 +64,22 @@ import { DataService, Projet } from 'src/app/core/data.service';
                         </span>
                     </div>
                     <p
-                        class="text-bancha-700 dark:text-gray-400 lg:col-span-2 text-1xl"
+                        class="text-1xl text-bancha-700 dark:text-gray-400 lg:col-span-2"
                         [innerHTML]="project.description">
                         <!-- Ajouter quand on est sur un petit écran, la possibilité de "voir plus" pour afficher le texte -->
                     </p>
-                    <span class="text-bancha-700 dark:text-gray-400">{{
-                        project.credits
-                    }}</span>
+                    <span class="text-bancha-700 dark:text-gray-400">
+                        {{ project.credits }}
+                    </span>
                 </div>
             </div>
 
             <!-- PLAN -->
             <div
-                class="flex-col lg:flex-row flex max-w-screen-1xl px-4 py-8 mx-auto gap-8 lg:gap-8">
+                class="mx-auto flex max-w-screen-1xl flex-col gap-8 px-4 py-8 lg:flex-row lg:gap-8">
                 <div class="flex flex-col items-center gap-4">
                     <span
-                        class="text-4xl font-satista text-bancha-800 dark:text-white font-semibold dark:font-normal whitespace-nowrap">
+                        class="whitespace-nowrap font-satista text-4xl font-semibold text-bancha-800 dark:font-normal dark:text-white">
                         Existant
                     </span>
                     <img
@@ -93,7 +93,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
 
                 <div class="flex flex-col items-center gap-4">
                     <span
-                        class="text-4xl font-satista text-bancha-800 dark:text-white font-semibold dark:font-normal whitespace-nowrap">
+                        class="whitespace-nowrap font-satista text-4xl font-semibold text-bancha-800 dark:font-normal dark:text-white">
                         Projet
                     </span>
                     <img
@@ -108,35 +108,32 @@ import { DataService, Projet } from 'src/app/core/data.service';
 
             <!-- IMAGES -->
             <div
-                class="grid grid-cols-6 gap-4 max-w-screen-1xl px-4 py-8 mx-auto">
+                class="mx-auto grid max-w-screen-1xl grid-cols-1 gap-4 px-4 py-8 md:grid-cols-6">
                 @for (item of project.imagesGrid; track $index) {
                     <img
-                        [ngSrc]="project.imageGridPath + item.path"
-                        class="object-cover h-full rounded-lg"
+                        [src]="project.imageGridPath + item.path"
+                        class="h-full rounded-lg object-cover"
                         loading="lazy"
-                        sizes="50vw"
-                        width="4771 "
-                        height="2475 "
                         [ngClass]="item.class ?? 'col-span-3'"
                         alt="{{ item.alt }}" />
                 }
             </div>
 
             <!-- Previous Projet - Back to top of project - Next Projet -->
-            <div class="max-w-screen-1xl mx-auto px-4">
+            <div class="mx-auto max-w-screen-1xl px-4">
                 <div
-                    class="flex items-center justify-between w-full h-12  bg-bancha-500 dark:bg-gray-900 rounded-lg">
+                    class="flex h-12 w-full items-center justify-between  rounded-lg bg-bancha-500 dark:bg-gray-900">
                     <a
                         [routerLink]="'/projects/' + project.nextProject"
-                        class="pl-4 sm:pl-32 text-cream-75 underline">
+                        class="pl-4 text-cream-75 underline transition-colors duration-300 hover:text-bancha-800 dark:text-white dark:hover:text-white sm:pl-32 ">
                         Projet précédent
                     </a>
 
                     <!-- Arrow up -->
-                    <a href="#projects">
+                    <a (click)="scrollTo('projects')" class="cursor-pointer">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            class="h-7 w-7 text-cream-75 hover:text-bancha-800 dark:text-white dark:hover:text-white"
+                            class="h-7 w-7 text-cream-75 transition-colors duration-300 hover:text-bancha-800 dark:text-white dark:hover:text-white"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -149,7 +146,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
                     </a>
                     <a
                         [routerLink]="'/projects/' + project.previousProject"
-                        class="pr-4 sm:pr-32 text-cream-75 underline">
+                        class="underlin pr-4 text-cream-75 transition-colors duration-300 hover:text-bancha-800 dark:text-white dark:hover:text-white sm:pr-32">
                         Projet suivant
                     </a>
                 </div>
@@ -168,8 +165,7 @@ export class ProjectComponent {
 
     constructor(
         private readonly projectService: DataService,
-        private readonly route: ActivatedRoute,
-        private readonly router: Router
+        private readonly route: ActivatedRoute
     ) {}
 
     ngOnInit() {
@@ -177,5 +173,12 @@ export class ProjectComponent {
             this.projectService.getProject(
                 this.route.snapshot.paramMap.get('id') as string
             ) ?? ({} as Projet);
+    }
+
+    scrollTo(id: string) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
     }
 }

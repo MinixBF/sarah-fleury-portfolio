@@ -10,10 +10,10 @@ import {
 } from '@angular/router';
 
 import { routes } from './app.routes';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 const scrollConfig: InMemoryScrollingOptions = {
     scrollPositionRestoration: 'top',
-    anchorScrolling: 'enabled',
 };
 
 const routerConfig: RouterConfigOptions = {
@@ -22,6 +22,7 @@ const routerConfig: RouterConfigOptions = {
 
 export const appConfig: ApplicationConfig = {
     providers: [
+        provideAnimations(),
         provideRouter(
             routes,
             withComponentInputBinding(),

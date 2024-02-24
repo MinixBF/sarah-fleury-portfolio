@@ -1,34 +1,34 @@
-import { NgClass, NgFor } from '@angular/common';
+import { NgClass, NgFor, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     selector: 'app-skills',
     standalone: true,
-    imports: [NgFor, NgClass],
+    imports: [NgFor, NgClass, NgOptimizedImage],
     template: `
         <section class="bg-cream-75 dark:bg-gray-800" id="skills">
             <div
-                class="max-w-screen-1xl px-8 pt-8 pb-4 mx-auto sm:pt-16 sm:pb-8 lg:px-12 lg:pt-16 lg:pb-16">
-                <div class="max-w-screen-md mb-4 lg:mb-8">
+                class="mx-auto max-w-screen-1xl px-8 pb-8 pt-24 sm:pb-8 sm:pt-16 lg:px-12 lg:pb-16 lg:pt-16">
+                <div class="mb-4 max-w-screen-md lg:mb-8">
                     <h2
-                        class="text-5xl font-satista text-bancha-800 dark:text-white font-semibold dark:font-normal whitespace-nowrap">
+                        class="whitespace-nowrap font-satista text-5xl font-semibold text-bancha-800 dark:font-normal dark:text-white">
                         Compétences
                     </h2>
                 </div>
                 <div>
                     <div
-                        class="pb-4 gap-4 xl:grid-cols-5 md:gap-8 grid grid-gap-16 grid-cols-[repeat(auto-fill,minmax(300px,1fr))] grid-flow-col
-                    auto-cols-[minmax(300px,1fr)] overflow-x-auto">
+                        class="grid-gap-16 grid cursor-pointer auto-cols-[minmax(300px,1fr)] grid-flow-col grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 overflow-x-auto
+                    pb-4 md:gap-8 xl:grid-cols-5">
                         @for (item of skills; track $index) {
                             <div
-                                class="flex flex-col items-start justify-start gap-3 p-8 bg-white rounded-lg shadow-md dark:bg-gray-900 border-2 border-bancha-100"
+                                class="flex flex-col items-start justify-start gap-3 rounded-lg border-2 border-bancha-100 bg-white p-8 shadow-md dark:bg-gray-900"
                                 (click)="selectSkill($index)"
                                 [ngClass]="{
                                     'hover:border-bancha-600': !item.selected,
                                     'border-bancha-600': item.selected
                                 }">
                                 <span
-                                    class="text-2xl tracking-tighter  font-bold text-bancha-800 dark:text-white">
+                                    class="text-2xl font-bold  tracking-tighter text-bancha-800 dark:text-white">
                                     {{ item.title }}
                                 </span>
                                 <p class="text-banch-700 dark:text-gray-400">
@@ -42,18 +42,29 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
                     class="grid gap-4 pt-8"
                     [ngClass]="skillsSelected.gridClass">
                     @for (image of skillsSelected.imagesGrid; track $index) {
-                        <img
-                            [src]="skillsSelected.imagesPath + image.path"
-                            loading="lazy"
-                            class="object-cover w-full h-full rounded-lg"
-                            [ngClass]="image.class ?? ''"
-                            alt="" />
+                        @if (image.height && image.width) {
+                            <img
+                                [ngSrc]="skillsSelected.imagesPath + image.path"
+                                loading="lazy"
+                                class="rounded-lg"
+                                [ngClass]="image.class ?? ''"
+                                [height]="image.height"
+                                [width]="image.width"
+                                [alt]="image.alt" />
+                        } @else {
+                            <img
+                                [src]="skillsSelected.imagesPath + image.path"
+                                loading="lazy"
+                                class="h-full w-full rounded-lg object-cover"
+                                [ngClass]="image.class ?? ''"
+                                alt="" />
+                        }
                     }
                 </div>
             </div>
             <!-- Back to top of skills -->
             <div
-                class="flex items-center justify-center w-full h-16 bg-cream-100 dark:bg-gray-900 invisible sm:visible">
+                class="flex h-16 w-full items-center justify-center bg-cream-100 dark:bg-gray-900">
                 <!-- Arrow up -->
                 <a href="#skills">
                     <svg
@@ -84,23 +95,23 @@ export class SkillsComponent {
             icon: 'fas fa-paint-brush',
             selected: true,
             imagesPath: '/assets/skills/sketchup-vray/',
-            gridClass: 'grid grid-rows-5 grid-cols-4',
+            gridClass: 'grid grid-cols-1 md:grid-rows-5 md:grid-cols-4',
             imagesGrid: [
-                { path: 'chambre_2_R4.jpg', class: 'col-span-4' },
+                { path: 'chambre_2_R4.webp', class: 'md:col-span-4' },
                 {
-                    path: 'SDB_R4.jpg',
-                    class: 'col-span-2 object-[39%]',
+                    path: 'SDB_R4.webp',
+                    class: 'md:col-span-2 object-[39%]',
                 },
-                { path: 'dressing_R5.jpg', class: 'col-span-2' },
-                { path: 'chambre_tapis.jpg', class: 'col-span-4' },
-                { path: 'SDB_R5.jpg', class: 'col-span-2' },
-                { path: 'chambre_R4.jpg', class: 'col-span-2' },
-                { path: 'couloir_R5.jpg', class: 'col-span-2' },
-                { path: 'buanderie_R4.jpg', class: 'col-span-2' },
-                { path: 'salon.jpg', class: 'col-span-4' },
-                { path: 'SAM.jpg', class: 'col-span-4' },
-                { path: 'salle_cinema_R5.jpg', class: 'col-span-2' },
-                { path: 'salle_sport_R5.jpg', class: 'col-span-2' },
+                { path: 'dressing_R5.webp', class: 'md:col-span-2' },
+                { path: 'chambre_tapis.webp', class: 'md:col-span-4' },
+                { path: 'SDB_R5.webp', class: 'md:col-span-2' },
+                { path: 'chambre_R4.webp', class: 'md:col-span-2' },
+                { path: 'couloir_R5.webp', class: 'md:col-span-2' },
+                { path: 'buanderie_R4.webp', class: 'md:col-span-2' },
+                { path: 'salon.webp', class: 'md:col-span-4' },
+                { path: 'SAM.webp', class: 'md:col-span-4' },
+                { path: 'salle_cinema_R5.webp', class: 'md:col-span-2' },
+                { path: 'salle_sport_R5.webp', class: 'md:col-span-2' },
             ],
         },
         {
@@ -110,14 +121,24 @@ export class SkillsComponent {
             icon: 'fas fa-paint-brush',
             selected: false,
             imagesPath: '/assets/skills/autocad/',
-            gridClass: 'grid grid-cols-2',
+            gridClass: 'grid grid-cols-1 md:grid-cols-2',
             imagesGrid: [
                 // Mettre chaque images dans le bon sens
-                { path: 'appart_100_elec.jpg', class: '' }, // Paysage
-                { path: 'appart_100.jpg', class: '' }, // Paysage
-                { path: 'appart_115.jpg', class: '' }, // Paysage
-                { path: 'biblio.jpg', class: '' }, // bon sens
-                { path: 'cuisine.jpg', class: '' }, // Paysage
+                {
+                    path: 'appart_100_elec.webp',
+                    class: '',
+                    height: '3017',
+                    width: '4209',
+                }, // Paysage
+                {
+                    path: 'appart_100.webp',
+                    class: '',
+                    height: '2996',
+                    width: '4102',
+                }, // Paysage
+                { path: 'appart_115.webp', class: 'md:col-span-2' }, // Paysage
+                { path: 'biblio.webp', class: '' }, // bon sens
+                { path: 'cuisine.webp', class: '' }, // Paysage
                 // 100_elec / 100
                 // 115
                 // biblio / cuisine
@@ -130,16 +151,16 @@ export class SkillsComponent {
             icon: 'fas fa-paint-brush',
             selected: false,
             imagesPath: 'assets/skills/worksite-supervision/',
-            gridClass: 'grid grid-cols-4',
+            gridClass: 'grid grid-cols-1 md:grid-cols-4',
             imagesGrid: [
                 // Si possible une photo en pleine largeur avec une photo en paysage
-                { path: '1.jpg', class: '' },
-                { path: '2.jpg', class: '' },
-                { path: '3.jpg', class: '' },
-                { path: '4.jpg', class: '' },
-                { path: '5.jpg', class: '' },
-                { path: '6.jpg', class: '' },
-                { path: '7.jpg', class: '' },
+                { path: '1.webp', class: '' },
+                { path: '2.webp', class: '' },
+                { path: '3.webp', class: '' },
+                { path: '4.webp', class: '' },
+                { path: '5.webp', class: '' },
+                { path: '6.webp', class: '' },
+                { path: '7.webp', class: '' },
             ],
         },
         {
@@ -149,14 +170,14 @@ export class SkillsComponent {
             icon: 'fas fa-paint-brush',
             selected: false,
             imagesPath: 'assets/skills/moodboard/',
-            gridClass: 'grid grid-rows-3 grid-cols-2 grid-flow-col',
+            gridClass: 'grid grid-cols-1 md:grid-rows-2 md:grid-cols-2',
             imagesGrid: [
                 // Mettre la photo 6 en pleine largeur
-                { path: '1.jpg', class: '' },
-                { path: '4.jpg', class: '' },
-                { path: '5.jpg', class: '' },
-                { path: '6.jpg', class: 'col-span-2 row-span-1' },
-                { path: 'ambiance.png', class: 'col-span-2' },
+                { path: 'planche_1.webp', class: 'md:row-span-1' },
+                { path: '4.webp', class: '' },
+                { path: '5.webp', class: '' },
+                { path: '6.webp', class: '' },
+                { path: 'ambiance.webp', class: 'md:col-span-2' },
             ],
         },
         {
@@ -166,16 +187,16 @@ export class SkillsComponent {
             icon: 'fab fa-adobe',
             selected: false,
             imagesPath: 'assets/skills/photoshop/',
-            gridClass: 'grid-cols-6',
+            gridClass: 'grid-cols-1 md:grid-cols-6',
             imagesGrid: [
-                { path: 'jardin2_PS.jpg', class: 'col-span-3 ' },
-                { path: 'jardin1_PS.jpg', class: 'col-span-3' },
-                { path: 'cabane.jpg', class: 'col-span-4 row-span-1' },
-                { path: 'coupe_cabane.jpg', class: 'col-span-2' },
-                { path: 'coupe_port_center.jpg', class: 'col-span-3' },
-                { path: 'façade_port_center.jpg', class: 'col-span-3' },
-                { path: 'façade.jpg', class: 'col-span-6' },
-                { path: 'plans_duplex.jpg', class: 'col-span-6' },
+                { path: 'jardin2_PS.webp', class: 'md:col-span-3 ' },
+                { path: 'jardin1_PS.webp', class: 'md:col-span-3' },
+                { path: 'cabane.webp', class: 'md:col-span-4 md:row-span-1' },
+                { path: 'coupe_cabane.webp', class: 'md:col-span-2' },
+                { path: 'coupe_port_center.webp', class: 'md:col-span-3' },
+                { path: 'façade_port_center.webp', class: 'md:col-span-3' },
+                { path: 'façade.webp', class: 'md:col-span-6' },
+                { path: 'plans_duplex.webp', class: 'md:col-span-6' },
             ],
         },
     ];
@@ -198,5 +219,11 @@ export type Skill = {
     selected: boolean;
     imagesPath: string;
     gridClass: string;
-    imagesGrid: { path: string; class?: string }[];
+    imagesGrid: {
+        path: string;
+        class?: string;
+        height?: string;
+        width?: string;
+        alt?: string;
+    }[];
 };

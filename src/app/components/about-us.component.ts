@@ -8,20 +8,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     template: `
         <section class="bg-cream-75 dark:bg-gray-900" id="about-us" #aboutUs>
             <div
-                class="max-w-screen-1xl px-8 py-8 mx-auto sm:py-16 lg:px-12 lg:py-32">
+                class="mx-auto max-w-screen-1xl px-8 pb-8 pt-24 sm:py-16 lg:px-12 lg:py-32">
                 <div class="flex flex-col gap-16 sm:flex-row">
                     <div class="flex flex-col">
                         <h2
-                            class="mb-4 text-5xl font-satista text-bancha-800 font-semibold dark:font-normal whitespace-nowrap dark:text-white">
+                            class="mb-4 whitespace-nowrap font-satista text-5xl font-semibold text-bancha-800 dark:font-normal dark:text-white">
                             A Propos
                         </h2>
                         <p
-                            class="text-bancha-700 dark:text-gray-400 lg:col-span-2 text-xl">
+                            class="text-xl text-bancha-700 dark:text-gray-400 lg:col-span-2">
                             Je suis persuadée qu’évoluer dans des espaces
                             esthétiques et bien pensés nous ressource et
                             améliore notre état d’esprit. C’est pourquoi j’ai
                             toujours eu à cœur de dessiner des projets
-                            fonctionnels, chaleureux et cohérents. <br />
+                            fonctionnels, chaleureux et cohérents.
+                            <br />
                             <br />
                             J’ai également une grande sensibilité portée sur les
                             couleurs et les matières. Cela me vient de ma
@@ -37,8 +38,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
                                 target="_blank"
                                 download="CV_Sarah_FLEURY.pdf"
                                 title="Télécharger mon CV"
-                                class="flex items-center justify-center p-2 px-4 w-fit text-cream-75 bg-bancha-600 rounded-lg cursor-pointer mt-8
-                          hover:bg-bancha-800 transition-colors duration-300
+                                class="mt-8 flex w-fit cursor-pointer items-center justify-center rounded-lg bg-bancha-600 p-2 px-4 text-cream-75
+                          transition-colors duration-300 hover:bg-bancha-800
                           focus:outline-none focus:ring-2 focus:ring-bancha-300
                           dark:bg-bancha-700 dark:hover:bg-bancha-800
                           dark:focus:ring-bancha-800">
@@ -50,7 +51,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
                         <img
                             loading="lazy"
                             src="assets/me.jpg"
-                            class="object-cover rounded-lg sm:w-[80em]"
+                            class="rounded-lg object-cover sm:w-[80em]"
                             alt="Sarah Fleury portrait" />
                     </div>
                 </div>

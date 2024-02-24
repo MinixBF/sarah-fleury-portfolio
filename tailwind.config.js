@@ -10,6 +10,9 @@ module.exports = {
             '3xl': '1920px',
         },
         extend: {
+            transitionProperty: {
+                height: 'height',
+            },
             fontFamily: {
                 satista: ['Satista', 'sans-serif'],
                 ultra: ['Ultra', 'sans-serif'],

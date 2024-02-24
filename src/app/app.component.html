@@ -9,13 +9,15 @@
 
 <header [class.dark]="isDark">
     <nav
+        [@toggleNavbar]="toggleNavbar"
         #navbar
-        class="left-0 right-0 shadow-sm backdrop-blur dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b dark:border-gray-600 mix-blend-hard-light">
+        [ngClass]="{ 'backdrop-blur-lg': toggleNavbar }"
+        class="fixed left-0 right-0 start-0 top-0 z-20 w-full border-b mix-blend-hard-light shadow-sm backdrop-blur dark:border-gray-600 dark:bg-gray-900">
         <div
-            class="max-w-screen-1xl flex flex-wrap items-center justify-center mx-auto p-4 relative">
+            class="relative mx-auto flex max-w-screen-1xl flex-wrap items-center justify-center p-4">
             <a
                 [routerLink]="['']"
-                class="flex items-center space-x-3 rtl:space-x-reverse absolute left-8 xl:left-0">
+                class="absolute left-8 flex items-center space-x-3 rtl:space-x-reverse xl:left-0">
                 @if (isHome) {
                     <img
                         src="assets/LOGO_BANCHA.svg"
@@ -31,17 +33,17 @@
                 }
             </a>
             <div
-                class="flex justify-end items-center md:order-2 space-x-3 md:space-x-0 w-full">
+                class="flex w-full items-center justify-end space-x-3 md:order-2 md:space-x-0">
                 <button
                     #navbarToggle
                     data-collapse-toggle="navbar-sticky"
                     type="button"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-bancha-800 rounded-lg md:hidden hover:bg-bancha-500 focus:outline-none focus:ring-2 focus:ring-bancha-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    class="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-bancha-800 hover:bg-bancha-500 focus:outline-none focus:ring-2 focus:ring-bancha-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
                     aria-controls="navbar-sticky"
-                    (click)="toggleNavbar()"
+                    (click)="toggleNavbar = !toggleNavbar"
                     aria-expanded="false">
                     <svg
-                        class="w-5 h-5"
+                        class="h-5 w-5"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -56,122 +58,68 @@
                 </button>
             </div>
             <div
-                class="hidden items-center justify-center w-full md:flex md:w-auto md:order-1"
+                class="hidden w-full items-center justify-center md:order-1 md:flex md:w-auto"
                 id="navbar-sticky">
                 <ul
-                    class="flex flex-col mt-4 font-medium border rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                    <li>
-                        <a
-                            href="#home"
-                            #navbarLinks
-                            [routerLink]="['']"
-                            class="block py-2 px-3 text-bancha-800 rounded font-semibold md:bg-transparent md:p-0 hover:text-bancha-900 transition-colors ease-in-out duration-150"
-                            aria-current="page"
-                            routerLinkActive="text-bancha-900 !font-semibold"
-                            >Accueil</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="#projects"
-                            #navbarLinks
-                            class="block py-2 px-3 text-bancha-800 rounded font-semibold md:p-0 hover:text-bancha-900 transition-colors ease-in-out duration-150"
-                            routerLinkActive="text-bancha-900 font-extrabold"
-                            >Projets</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="#skills"
-                            #navbarLinks
-                            class="block py-2 px-3 text-bancha-800 rounded font-semibold md:p-0 hover:text-bancha-900 transition-colors ease-in-out duration-150"
-                            routerLinkActive="text-bancha-900 font-extrabold"
-                            >Compétences</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="#about-us"
-                            #navbarLinks
-                            class="block py-2 px-3 text-bancha-800 rounded font-semibold md:p-0 hover:text-bancha-900 transition-colors ease-in-out duration-150"
-                            routerLinkActive="text-bancha-900 font-extrabold"
-                            >A Propos</a
-                        >
-                    </li>
+                    class="mt-4 flex flex-col justify-center rounded-lg border font-medium rtl:space-x-reverse dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:dark:bg-gray-900">
+                    @for (item of navBar; track $index) {
+                        <li>
+                            <a
+                                (click)="scrollTo(item.scrollTo)"
+                                #navbarLinks
+                                class="block cursor-pointer rounded px-3 py-2 font-semibold text-bancha-800 transition-colors duration-150 ease-in-out hover:text-bancha-900 md:bg-transparent md:p-0"
+                                routerLinkActive="text-bancha-900 !font-semibold">
+                                {{ item.name }}
+                            </a>
+                        </li>
+                    }
                 </ul>
             </div>
             <!-- ACTIONS -->
         </div>
+        @if (toggleNavbar) {
+            <!-- Nav Bar Menu -->
+            <ul
+                class="my-auto flex h-[84%] flex-col items-center justify-center gap-[15%] font-medium">
+                @for (item of navBar; track $index) {
+                    <li>
+                        <a
+                            @fadeIn
+                            (click)="toggleNavbar = !toggleNavbar"
+                            (click)="scrollTo(item.scrollTo)"
+                            #navbarLinks
+                            class="block cursor-pointer rounded px-3 py-2 font-satista text-5xl font-bold text-bancha-800 transition-colors duration-150 ease-in-out hover:text-bancha-900 md:p-0"
+                            routerLinkActive="text-bacnha-900 !font-semibold">
+                            {{ item.name }}
+                        </a>
+                    </li>
+                }
+            </ul>
+        }
     </nav>
 </header>
-
-@if (isHome) {
-    <section class="bg-bancha-500 dark:bg-gray-900 h-screen" id="home">
-        <div
-            class="grid max-w-screen-1xl px-16 py-32 mx-auto lg:gap-8 xl:gap-6 lg:py-16 lg:grid-cols-12 h-full">
-            <div class="mr-auto place-self-center lg:col-span-6">
-                <h1
-                    class="max-w-2xl mb-4 text-5xl leading-none md:text-6xl xl:text-7xl font-satista dark:text-white text-cream-75">
-                    Sarah Fleury
-                </h1>
-                <p
-                    class="max-w-2xl mb-6 font-light text-cream-75 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-                    Architecte d’intérieur diplômée de l’ENSAAMA Olivier de
-                    Serres depuis 2021. Je travaille en tant que cheffe de
-                    projet chez Camille Hermand Architectures depuis deux ans.
-                    J’ai pu y mener une dizaine de projets résidentiels allant
-                    de petites rénovations partielles d’appartements à des
-                    rénovations complètes de maisons.
-                </p>
-            </div>
-            <div class="lg:mt-0 lg:col-span-6 lg:place-self-center">
-                <img
-                    class="object-contain w-full h-full rounded-lg"
-                    ngSrc="assets/moodboard.png"
-                    height="2009"
-                    width="2152"
-                    priority
-                    alt="Moodboard" />
-            </div>
-            <!-- Indication to go down section -->
-            <div
-                class="absolute bottom-10 flex flex-col items-center justify-center right-1/2 left-1/2 invisible sm:visible">
-                <div class="animate-bounce">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-7 w-7 text-cream-75 hover:text-primary-600"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                    </svg>
-                </div>
+<div
+    class="flex h-full flex-col overflow-y-auto"
+    [ngClass]="{ '': toggleNavbar }"
+    @fadeIn>
+    <router-outlet class="h-full"></router-outlet>
+    <footer class="bg-cream-75 p-4 dark:bg-gray-800 sm:p-6">
+        <div class="mx-auto max-w-screen-1xl">
+            <hr
+                class="my-6 border-bancha-800 dark:border-gray-700 sm:mx-auto lg:my-8" />
+            <div class="flex items-center justify-between">
+                <span
+                    class="text-sm text-bancha-800 dark:text-gray-400 sm:text-center">
+                    © {{ currentYear }}
+                    <a href="/" class="hover:underline">Sarah Fleury</a>
+                    .
+                </span>
+                <!-- <div class="flex space-x-6">
+                  <a class="text-bancha-800 dark:text-gray-400">
+                      Mention légales
+                  </a>
+              </div> -->
             </div>
         </div>
-    </section>
-}
-
-<router-outlet></router-outlet>
-
-<footer class="p-4 bg-cream-75 sm:p-6 dark:bg-gray-800">
-    <div class="max-w-screen-1xl mx-auto">
-        <hr
-            class="my-6 border-bancha-800 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <div class="flex items-center justify-between">
-            <span
-                class="text-sm text-bancha-800 sm:text-center dark:text-gray-400"
-                >© {{ currentYear }}
-                <a href="/" class="hover:underline">Sarah Fleury</a>.
-            </span>
-            <!-- <div class="flex space-x-6">
-                <a class="text-bancha-800 dark:text-gray-400">
-                    Mention légales
-                </a>
-            </div> -->
-        </div>
-    </div>
-</footer>
+    </footer>
+</div>
