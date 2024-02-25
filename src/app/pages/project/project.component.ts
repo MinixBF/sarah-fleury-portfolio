@@ -1,6 +1,18 @@
 import { CommonModule, IMAGE_CONFIG, NgOptimizedImage } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    DestroyRef,
+    Input,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import {
+    ActivatedRoute,
+    NavigationEnd,
+    Router,
+    RouterModule,
+} from '@angular/router';
+import { filter } from 'rxjs';
 import { DataService, Projet } from 'src/app/core/data.service';
 
 @Component({
@@ -155,7 +167,8 @@ export class ProjectComponent {
     constructor(
         private readonly projectService: DataService,
         private readonly route: ActivatedRoute,
-        private readonly router: Router
+        private readonly router: Router,
+        private readonly destroyRef: DestroyRef
     ) {}
 
     ngOnInit() {
@@ -163,6 +176,17 @@ export class ProjectComponent {
             this.projectService.getProject(
                 this.route.snapshot.routeConfig?.path as string
             ) ?? ({} as Projet);
+
+        this.router.events
+            .pipe(
+                filter(event => event instanceof NavigationEnd),
+                takeUntilDestroyed(this.destroyRef)
+            )
+            .subscribe(() => {
+                // Scroll to the top of the page
+                console.log('scrolling to top');
+                window.scrollTo(0, 0);
+            });
     }
 
     scrollTo(id: string) {

@@ -7,7 +7,7 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<header [class.dark]="isDark">
+<header>
     <nav
         [@toggleNavbar]="toggleNavbar"
         #navbar
@@ -18,19 +18,17 @@
             <a
                 [routerLink]="['']"
                 class="absolute left-8 flex items-center space-x-3 rtl:space-x-reverse xl:left-0">
-                @if (isHome) {
-                    <img
-                        src="assets/LOGO_BANCHA.svg"
-                        class="h-9"
-                        loading="lazy"
-                        alt="Sarah Fleury Logo" />
-                } @else {
-                    <img
-                        src="assets/LOGO_BANCHA.svg"
-                        class="h-9"
-                        loading="lazy"
-                        alt="Sarah Fleury Logo" />
-                }
+                <img
+                    src="assets/LOGO_BANCHA.svg"
+                    class="h-9 dark:hidden"
+                    loading="lazy"
+                    alt="Sarah Fleury Logo" />
+
+                <img
+                    src="assets/LOGO_WHITE.svg"
+                    class="hidden h-9 dark:block"
+                    loading="lazy"
+                    alt="Sarah Fleury Logo" />
             </a>
             <div
                 class="flex w-full items-center justify-end space-x-3 md:order-2 md:space-x-0">
@@ -67,7 +65,7 @@
                             <a
                                 (click)="scrollTo(item.scrollTo)"
                                 #navbarLinks
-                                class="block cursor-pointer rounded px-3 py-2 font-semibold text-bancha-800 transition-colors duration-150 ease-in-out hover:text-bancha-900 md:bg-transparent md:p-0"
+                                class="block cursor-pointer rounded px-3 py-2 font-semibold text-bancha-800 transition-colors duration-150 ease-in-out hover:text-bancha-900 dark:text-cream-75 dark:hover:text-cream-100 md:bg-transparent md:p-0"
                                 routerLinkActive="text-bancha-900 !font-semibold">
                                 {{ item.name }}
                             </a>
@@ -112,7 +110,6 @@
                     class="text-sm text-bancha-800 dark:text-gray-400 sm:text-center">
                     © {{ currentYear }}
                     <a href="/" class="hover:underline">Sarah Fleury</a>
-                    .
                 </span>
                 <!-- <div class="flex space-x-6">
                   <a class="text-bancha-800 dark:text-gray-400">

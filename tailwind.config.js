@@ -2,6 +2,7 @@
 import { screens as _screens } from 'tailwindcss/defaultTheme';
 
 module.exports = {
+    darkMode: 'selector',
     content: ['./src/**/*.{html,ts}', './projects/**/*.{html,ts}'],
     theme: {
         screens: {

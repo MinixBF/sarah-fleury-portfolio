@@ -64,7 +64,6 @@ export class AppComponent implements OnInit {
     skill = signal('photoshop');
     skillCount = signal(0);
 
-    isDark!: boolean;
     isHome: boolean = true;
     navId: string | null = null;
     toggleNavbar: boolean = false;
@@ -114,7 +113,7 @@ export class AppComponent implements OnInit {
                 this.isHome = isHome;
             });
 
-        this.isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        // this.isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
 
     scrollTo(id: string | undefined) {
