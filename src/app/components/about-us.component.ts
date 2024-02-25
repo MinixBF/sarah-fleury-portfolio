@@ -16,7 +16,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
                             A Propos
                         </h2>
                         <p
-                            class="text-base text-bancha-700  dark:text-gray-400 md:text-xl lg:col-span-2">
+                            class="text-pretty text-base text-bancha-700  dark:text-gray-400 md:text-xl lg:col-span-2">
                             Je suis persuadée qu’évoluer dans des espaces
                             esthétiques et bien pensés nous ressource et
                             améliore notre état d’esprit. C’est pourquoi j’ai

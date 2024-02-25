@@ -69,7 +69,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
                         </span>
                     </div>
                     <p
-                        class="text-1xl text-bancha-700 dark:text-gray-400 lg:col-span-2"
+                        class="text-1xl text-pretty text-bancha-700 dark:text-gray-400 lg:col-span-2"
                         [innerHTML]="project.description">
                         <!-- Ajouter quand on est sur un petit écran, la possibilité de "voir plus" pour afficher le texte -->
                     </p>
