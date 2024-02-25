@@ -168,7 +168,7 @@ export class ProjectComponent {
     scrollTo(id: string) {
         const element = document.getElementById(id);
         if (element) {
-            element.scrollIntoView({ behavior: 'instant', block: 'start' });
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     }
 }

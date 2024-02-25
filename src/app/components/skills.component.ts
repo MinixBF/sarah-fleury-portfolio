@@ -54,7 +54,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             <div
                 class="flex h-16 w-full items-center justify-center bg-cream-100 dark:bg-gray-900">
                 <!-- Arrow up -->
-                <a href="#skills">
+                <a (click)="scrollTo('skills')" class="cursor-pointer">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-7 w-7 text-bancha-600 hover:text-bancha-800 dark:text-white dark:hover:text-white"
@@ -197,6 +197,11 @@ export class SkillsComponent {
         });
 
         this.skillsSelected = this.skills[index];
+    }
+
+    scrollTo(id: string) {
+        const element = document.getElementById(id);
+        element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
 
