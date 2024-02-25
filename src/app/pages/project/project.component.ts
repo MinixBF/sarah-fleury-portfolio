@@ -103,7 +103,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
                         [src]="project.imageGridPath + item.path"
                         class="h-full rounded-lg object-cover"
                         loading="lazy"
-                        [ngClass]="item.class ?? 'col-span-3'"
+                        [ngClass]="item.class ?? 'md:col-span-3'"
                         alt="{{ item.alt }}" />
                 }
             </div>

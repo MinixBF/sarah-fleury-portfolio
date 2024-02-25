@@ -71,23 +71,23 @@ export class DataService {
                 {
                     path: 'cuisine.webp',
                     alt: 'Cuisine',
-                    class: 'col-span-6',
+                    class: 'md:col-span-6',
                 },
                 {
                     path: 'salon_vers_cuisine.webp',
                     alt: 'Salon vers cuisine',
-                    class: 'col-span-2',
+                    class: 'md:col-span-2',
                 },
                 {
                     path: 'salle_a_manger.webp',
                     alt: 'Salle à manger',
-                    class: 'col-span-2',
+                    class: 'md:col-span-2',
                 },
 
                 {
                     path: 'salon.webp',
                     alt: 'Salon',
-                    class: 'col-span-2',
+                    class: 'md:col-span-2',
                 },
                 {
                     path: 'entree.webp',
