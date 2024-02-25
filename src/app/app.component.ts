@@ -96,11 +96,13 @@ export class AppComponent implements OnInit {
                     const element = document.getElementById(this.navId);
                     setTimeout(() => {
                         if (element) {
-                            console.log('scrolling to', this.navId);
-                            element.scrollIntoView({ behavior: 'instant' });
+                            element.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start',
+                            });
                             this.navId = null;
                         }
-                    }, 200);
+                    }, 300);
                 } else {
                     window.scrollTo(0, 0);
                 }
@@ -123,7 +125,7 @@ export class AppComponent implements OnInit {
         const element = document.getElementById(id);
         if (element) {
             console.log('scrolling to', id);
-            element.scrollIntoView({ behavior: 'instant' });
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
             this.router.navigate(['']);
             this.navId = id;

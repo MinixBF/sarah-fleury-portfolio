@@ -16,7 +16,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
                             A Propos
                         </h2>
                         <p
-                            class="text-xl text-bancha-700 dark:text-gray-400 lg:col-span-2">
+                            class="text-base text-bancha-700  dark:text-gray-400 md:text-xl lg:col-span-2">
                             Je suis persuadée qu’évoluer dans des espaces
                             esthétiques et bien pensés nous ressource et
                             améliore notre état d’esprit. C’est pourquoi j’ai
@@ -49,7 +49,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
                     </div>
                     <div class="flex flex-col items-center">
                         <img
-                            loading="lazy"
                             src="assets/me.jpg"
                             class="rounded-lg object-cover sm:w-[80em]"
                             alt="Sarah Fleury portrait" />

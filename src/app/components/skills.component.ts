@@ -42,23 +42,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
                     class="grid gap-4 pt-8"
                     [ngClass]="skillsSelected.gridClass">
                     @for (image of skillsSelected.imagesGrid; track $index) {
-                        @if (image.height && image.width) {
-                            <img
-                                [ngSrc]="skillsSelected.imagesPath + image.path"
-                                loading="lazy"
-                                class="rounded-lg"
-                                [ngClass]="image.class ?? ''"
-                                [height]="image.height"
-                                [width]="image.width"
-                                [alt]="image.alt" />
-                        } @else {
-                            <img
-                                [src]="skillsSelected.imagesPath + image.path"
-                                loading="lazy"
-                                class="h-full w-full rounded-lg object-cover"
-                                [ngClass]="image.class ?? ''"
-                                alt="" />
-                        }
+                        <img
+                            [src]="skillsSelected.imagesPath + image.path"
+                            class="h-full w-full rounded-lg object-cover"
+                            [ngClass]="image.class ?? ''"
+                            alt="" />
                     }
                 </div>
             </div>
