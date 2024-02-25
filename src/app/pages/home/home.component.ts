@@ -16,7 +16,9 @@ import { SkillsComponent } from 'src/app/components/skills.component';
         RouterModule,
     ],
     template: `
-        <section class="h-screen bg-bancha-500 dark:bg-gray-900" id="home">
+        <section
+            class="relative h-screen bg-bancha-500 dark:bg-gray-900"
+            id="home">
             <div
                 class="mx-auto grid h-full max-w-screen-1xl px-16 py-32 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-6">
                 <div class="mr-auto place-self-center lg:col-span-6">
