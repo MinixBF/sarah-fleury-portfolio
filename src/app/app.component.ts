@@ -107,6 +107,8 @@ export class AppComponent implements OnInit {
                             this.navId = null;
                         }
                     }, 200);
+                } else {
+                    window.scrollTo(0, 0);
                 }
 
                 const isHome =

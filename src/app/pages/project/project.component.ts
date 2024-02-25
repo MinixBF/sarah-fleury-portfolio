@@ -18,7 +18,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
         },
     ],
     template: `
-        <section class="bg-cream-75 dark:bg-gray-800" id="projects">
+        <section class="bg-cream-75 dark:bg-gray-800" id="project">
             <div
                 class="relative mx-auto flex max-w-screen-1xl flex-col gap-4 px-8 py-24 lg:grid lg:grid-cols-2 lg:gap-8">
                 <a
@@ -119,7 +119,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
                     </a> -->
 
                     <!-- Arrow up -->
-                    <a (click)="scrollTo('projects')" class="cursor-pointer">
+                    <a (click)="scrollTo('project')" class="cursor-pointer">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             class="h-7 w-7 text-cream-75 transition-colors duration-300 hover:text-bancha-800 dark:text-white dark:hover:text-white"
