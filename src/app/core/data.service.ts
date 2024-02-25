@@ -83,7 +83,6 @@ export class DataService {
                     alt: 'Salle à manger',
                     class: 'md:col-span-2',
                 },
-
                 {
                     path: 'salon.webp',
                     alt: 'Salon',
@@ -170,12 +169,12 @@ export class DataService {
                 {
                     path: 'chambre_enfant.webp',
                     alt: 'Chambre enfant',
-                    class: 'col-span-4',
+                    class: 'md:col-span-4',
                 },
                 {
                     path: 'sdb_enfant.webp',
                     alt: 'Salle de bain enfant',
-                    class: 'col-span-2',
+                    class: 'md:col-span-2',
                 },
                 {
                     path: 'chambre_parent.webp',
