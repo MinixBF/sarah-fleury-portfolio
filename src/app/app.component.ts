@@ -97,7 +97,7 @@ export class AppComponent implements OnInit {
                     setTimeout(() => {
                         if (element) {
                             console.log('scrolling to', this.navId);
-                            element.scrollIntoView({ behavior: 'smooth' });
+                            element.scrollIntoView({ behavior: 'instant' });
                             this.navId = null;
                         }
                     }, 200);
@@ -123,7 +123,7 @@ export class AppComponent implements OnInit {
         const element = document.getElementById(id);
         if (element) {
             console.log('scrolling to', id);
-            element.scrollIntoView({ behavior: 'smooth' });
+            element.scrollIntoView({ behavior: 'instant' });
         } else {
             this.router.navigate(['']);
             this.navId = id;
