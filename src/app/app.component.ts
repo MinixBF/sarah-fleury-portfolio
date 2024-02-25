@@ -46,12 +46,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
                     height: '100%',
                 })
             ),
-            state(
-                'false',
-                style({
-                    height: '7%',
-                })
-            ),
             transition('false => true', animate('300ms ease-in')),
             transition('true => false', animate('300ms ease-out')),
         ]),
