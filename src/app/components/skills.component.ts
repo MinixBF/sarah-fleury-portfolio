@@ -147,7 +147,7 @@ export class SkillsComponent {
         {
             title: 'Suivi de chantier',
             description:
-                'Il s’agit pour moi d’un moment d’échange primordial avec les entreprises et les clients. C’est également très formateur.',
+                'Il s’agit d’un moment d’échange primordial avec les entreprises et les clients. C’est également très formateur.',
             icon: 'fas fa-paint-brush',
             selected: false,
             imagesPath: 'assets/skills/worksite-supervision/',

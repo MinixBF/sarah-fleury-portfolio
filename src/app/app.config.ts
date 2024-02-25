@@ -25,10 +25,10 @@ export const appConfig: ApplicationConfig = {
         provideAnimations(),
         provideRouter(
             routes,
-            withComponentInputBinding(),
-            withViewTransitions(),
             withRouterConfig(routerConfig),
-            withInMemoryScrolling(scrollConfig)
+            withInMemoryScrolling(scrollConfig),
+            withComponentInputBinding(),
+            withViewTransitions()
         ),
     ],
 };

@@ -11,44 +11,45 @@ export class DataService {
             id: 'jeuneurs',
             title: 'Jeuneurs',
             description:
-                "Nos clients ont acheté ce bien dans le but d’en faire un véritable projet de vie. Ils ont souhaité transformé un appartement classique et vieillot pour en faire un appartement moderne adapté à leur mode de vie. Les dégagements inutiles ont été supprimés pour créer de grands espaces ouverts et lumineux.<br/><br/>Sur ce projet, je suis intervenue principalement durant le suivi de chantier et pour apporter les dernières précisions aux dessins des menuiseries et aux choix esthétiques. Les clients sont restés très ouverts à mes propositions allant des peintures jusqu'aux détails des poignées de menuiseries en passant par le mobilier et les luminaires.",
+                "Nos clients ont acheté ce bien dans le but d’en faire un véritable projet de vie. Ils ont souhaité transformer un appartement classique et vieillot pour en faire un appartement moderne adapté à leur mode de vie. Les dégagements inutiles ont été supprimés pour créer de grands espaces ouverts et lumineux.<br/><br/>Sur ce projet, je suis intervenue principalement durant le suivi de chantier et pour apporter les dernières précisions aux dessins des menuiseries et aux choix esthétiques. Les clients sont restés très ouverts à mes propositions allant des peintures jusqu'aux détails des poignées de menuiseries en passant par le mobilier et les luminaires.",
             shortDesc: 'Rénovation complète d’un appartement de 110m²',
-            credits: 'Fait pour l’agence Camille Hermand Architectures',
+            credits:
+                'Fait pour l’agence Camille Hermand Architectures et photos de Pauline Le Goff',
             nextProject: 'republique',
             previousProject: 'mermoz',
             imagePath: 'assets/projects/jeuneurs/',
             imageGridPath: 'assets/projects/jeuneurs/grid/',
             imagesGrid: [
                 {
-                    path: 'entree.jpg',
+                    path: 'entree.webp',
                     alt: 'Entrée',
                 },
                 {
-                    path: 'cuisine.jpg',
+                    path: 'cuisine.webp',
                     alt: 'Cuisine',
                 },
                 {
-                    path: 'salon.jpg',
+                    path: 'salon.webp',
                     alt: 'Salon',
                 },
                 {
-                    path: 'biblio.jpg',
+                    path: 'biblio.webp',
                     alt: 'Bibliothèque',
                 },
                 {
-                    path: 'salon_vers_bureau.jpg',
+                    path: 'salon_vers_bureau.webp',
                     alt: 'Salon vers bureau',
                 },
                 {
-                    path: 'bureau.jpg',
+                    path: 'bureau.webp',
                     alt: 'Bureau',
                 },
                 {
-                    path: 'sdb.jpg',
+                    path: 'sdb.webp',
                     alt: 'Salle de bain',
                 },
                 {
-                    path: 'chambre.jpg',
+                    path: 'chambre.webp',
                     alt: 'Chambre',
                 },
             ],
@@ -57,58 +58,59 @@ export class DataService {
             id: 'republique',
             title: 'République',
             description:
-                "Lorsque les clients ont acheté ce bien, le plan était déjà fonctionnel. Cependant, l’appartement manquait de charme et les bibliothèques étaient trop importantes pour les besoins de nos clients.<br/><br/>Hormis les salles d'eau, j'ai pu travailler sur l'ensemble des menuiseries existantes et en créer de nouvelles. De nombreux rangements fermés ont été ajoutés pour permettre de cacher les objets du quotidien.<br/><br/>Et côté ambiance, la cliente étant peintre avec une grande sensibilité pour des couleurs douce et naturelle, j'ai pu l'accompagner dans le choix d'une palette cohérente et chaleureuse sur l’ensemble de l’appartement.",
+                "Lorsque les clients ont acheté ce bien, le plan était déjà fonctionnel. Cependant, l’appartement manquait de charme et les bibliothèques étaient trop importantes pour les besoins de nos clients.<br/><br/>Hormis les salles d'eau, j'ai pu travailler sur l'ensemble des menuiseries existantes et en créer de nouvelles. De nombreux rangements fermés ont été ajoutés pour permettre de cacher les objets du quotidien.<br/><br/>Et côté ambiance, la cliente étant peintre avec une grande sensibilité pour les couleurs douces et naturelles, j'ai pu l'accompagner dans le choix d'une palette cohérente et chaleureuse sur l’ensemble de l’appartement.",
             shortDesc:
                 'Rénovation partielle pour un appartement familial de 115m²',
-            credits: 'Fait pour l’agence Camille Hermand Architectures',
+            credits:
+                'Fait pour l’agence Camille Hermand Architectures et photos de Pauline Le Goff',
             nextProject: 'vienne',
             previousProject: 'jeuneurs',
             imagePath: 'assets/projects/republique/',
             imageGridPath: 'assets/projects/republique/grid/',
             imagesGrid: [
                 {
-                    path: 'cuisine.jpg',
+                    path: 'cuisine.webp',
                     alt: 'Cuisine',
                     class: 'col-span-6',
                 },
                 {
-                    path: 'salon_vers_cuisine.jpg',
+                    path: 'salon_vers_cuisine.webp',
                     alt: 'Salon vers cuisine',
                     class: 'col-span-2',
                 },
                 {
-                    path: 'salle_a_manger.jpg',
+                    path: 'salle_a_manger.webp',
                     alt: 'Salle à manger',
                     class: 'col-span-2',
                 },
 
                 {
-                    path: 'salon.jpg',
+                    path: 'salon.webp',
                     alt: 'Salon',
                     class: 'col-span-2',
                 },
                 {
-                    path: 'entree.jpg',
+                    path: 'entree.webp',
                     alt: 'Entrée',
                 },
                 {
-                    path: 'entree_2.jpg',
+                    path: 'entree_2.webp',
                     alt: 'Entrée',
                 },
                 {
-                    path: 'couloir.jpg',
+                    path: 'couloir.webp',
                     alt: 'Couloir',
                 },
                 {
-                    path: 'chambre_enfant_2.jpg',
+                    path: 'chambre_enfant_2.webp',
                     alt: 'Chambre enfant',
                 },
                 {
-                    path: 'chambre_enfant.jpg',
+                    path: 'chambre_enfant.webp',
                     alt: 'Chambre enfant',
                 },
                 {
-                    path: 'chambre_bambi.jpg',
+                    path: 'chambre_bambi.webp',
                     alt: 'Chambre enfant',
                 },
             ],
@@ -127,27 +129,27 @@ export class DataService {
             imageGridPath: 'assets/projects/vienne/grid/',
             imagesGrid: [
                 {
-                    path: 'entree.jpg',
+                    path: 'entree.webp',
                     alt: 'Entrée',
                 },
                 {
-                    path: 'biblio.jpg',
+                    path: 'biblio.webp',
                     alt: 'Bibliothèque',
                 },
                 {
-                    path: 'biblio_detail.jpg',
+                    path: 'biblio_detail.webp',
                     alt: 'Détail bibliothèque',
                 },
                 {
-                    path: 'cuisine.jpg',
+                    path: 'cuisine.webp',
                     alt: 'Cuisine',
                 },
                 {
-                    path: 'enfant.jpg',
+                    path: 'enfant.webp',
                     alt: 'Chambre enfant',
                 },
                 {
-                    path: 'enfant_cactus.jpg',
+                    path: 'enfant_cactus.webp',
                     alt: 'Chambre enfant',
                 },
             ],
@@ -157,7 +159,8 @@ export class DataService {
             title: 'Mermoz',
             description:
                 'Nos clients viennent d’acheter un nouvel appartement dans lequel ils souhaitent voir grandir leurs enfants dans un espace plus fonctionnel et agréable à vivre que leur précédent appartement.<br/><br/>Malgré plusieurs esquisses proposant des aménagements bien différents de l’existant, les clients sont restés sur une proposition relativement proche de l’existant pour favoriser un plan avec une grande salle à manger et une cuisine semi séparée.<br/><br/>Concernant les ambiances, j’en suis pour le moment aux premières propositions avec dans l’idée de créer un environnement coloré et pétillant à l’image de nos clients.',
-            shortDesc: 'Rénovation complète pour un appartement de 140m²',
+            shortDesc:
+                'Rénovation complète pour un appartement de 140m² - En cours',
             credits: 'Fait pour l’agence Camille Hermand Architectures',
             nextProject: 'jeuneurs',
             previousProject: 'vienne',
@@ -165,58 +168,57 @@ export class DataService {
             imageGridPath: 'assets/projects/mermoz/grid/',
             imagesGrid: [
                 {
-                    path: 'chambre_enfant.jpg',
+                    path: 'chambre_enfant.webp',
                     alt: 'Chambre enfant',
                     class: 'col-span-4',
                 },
                 {
-                    path: 'sdb_enfant.jpg',
+                    path: 'sdb_enfant.webp',
                     alt: 'Salle de bain enfant',
                     class: 'col-span-2',
                 },
                 {
-                    path: 'chambre_parent.jpg',
+                    path: 'chambre_parent.webp',
                     alt: 'Chambre parent',
                 },
                 {
-                    path: 'chambre_enfant_2.jpg',
+                    path: 'chambre_enfant_2.webp',
                     alt: 'Chambre enfant',
                 },
                 {
-                    path: 'cuisine.jpg',
+                    path: 'cuisine.webp',
                     alt: 'Cuisine',
                 },
                 {
-                    path: 'cuisine_table.jpg',
+                    path: 'cuisine_table.webp',
                     alt: 'Cuisine avec table',
                 },
                 {
-                    path: 'entree.jpg',
+                    path: 'entree.webp',
                     alt: 'Entrée',
                 },
                 {
-                    path: 'salle_a_manger.jpg',
+                    path: 'salle_a_manger.webp',
                     alt: 'Salle à manger',
                 },
                 {
-                    path: 'salon.jpg',
+                    path: 'salon.webp',
                     alt: 'Salon',
                 },
                 {
-                    path: 'salon_tv.jpg',
+                    path: 'salon_tv.webp',
                     alt: 'Salon avec TV',
                 },
-
-                {
-                    path: 'sdb_parent.jpg',
-                    alt: 'Salle de bain parent ',
-                    class: 'object-[39%]',
-                },
-                {
-                    path: 'wc.jpg',
-                    alt: 'Toilette',
-                    class: 'object-[39%]',
-                },
+                // {
+                //     path: 'sdb_parent.webp',
+                //     alt: 'Salle de bain parent ',
+                //     class: 'col-span-3',
+                // },
+                // {
+                //     path: 'wc.webp',
+                //     alt: 'Toilette',
+                //     class: 'col-span-3',
+                // },
             ],
         },
     ];
@@ -237,7 +239,7 @@ export class DataService {
                 title: projet.title,
                 id: projet.id,
                 link: `/projects/${projet.id}`,
-                coverImagePath: projet.imagePath + 'couverture.jpg',
+                coverImagePath: projet.imagePath + 'couverture.webp',
                 shortDesc: projet.shortDesc,
                 class: projet.id !== 'mermoz' ? 'object-fill' : '',
             };

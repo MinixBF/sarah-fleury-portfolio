@@ -18,7 +18,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
         },
     ],
     template: `
-        <section class="bg-cream-75 dark:bg-gray-800" #projects>
+        <section class="bg-cream-75 dark:bg-gray-800" id="projects">
             <div
                 class="relative mx-auto flex max-w-screen-1xl flex-col gap-4 px-8 py-24 lg:grid lg:grid-cols-2 lg:gap-8">
                 <a
@@ -39,14 +39,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
                     Retour aux projets
                 </a>
                 <img
-                    [srcset]="
-                        project.imagePath +
-                        'cover1x.jpg 1x,' +
-                        project.imagePath +
-                        'cover2x.jpg 2x,' +
-                        project.imagePath +
-                        'cover3x.jpg 3x'
-                    "
+                    [src]="project.imagePath + 'cover.webp'"
                     loading="lazy"
                     priority
                     class="h-full rounded-lg"
@@ -83,11 +76,9 @@ import { DataService, Projet } from 'src/app/core/data.service';
                         Existant
                     </span>
                     <img
-                        [ngSrc]="project.imagePath + existingPath + '.png'"
+                        [src]="project.imagePath + existingPath + '.webp'"
                         loading="lazy"
-                        width="4795"
-                        height="2507"
-                        sizes="50vw"
+                        alt="Plan de l'existant"
                         class="object-cover" />
                 </div>
 
@@ -97,11 +88,9 @@ import { DataService, Projet } from 'src/app/core/data.service';
                         Projet
                     </span>
                     <img
-                        [ngSrc]="project.imagePath + proposalPath + '.png'"
+                        [src]="project.imagePath + proposalPath + '.webp'"
                         loading="lazy"
-                        sizes="50vw"
-                        width="4771"
-                        height="2475"
+                        alt="Plan du projet"
                         class="object-cover" />
                 </div>
             </div>
@@ -122,12 +111,12 @@ import { DataService, Projet } from 'src/app/core/data.service';
             <!-- Previous Projet - Back to top of project - Next Projet -->
             <div class="mx-auto max-w-screen-1xl px-4">
                 <div
-                    class="flex h-12 w-full items-center justify-between  rounded-lg bg-bancha-500 dark:bg-gray-900">
-                    <a
-                        [routerLink]="'/projects/' + project.nextProject"
+                    class="flex h-12 w-full items-center justify-center  rounded-lg bg-bancha-500 dark:bg-gray-900">
+                    <!-- <a
+                        [routerLink]="['/projects/', project.previousProject]"
                         class="pl-4 text-cream-75 underline transition-colors duration-300 hover:text-bancha-800 dark:text-white dark:hover:text-white sm:pl-32 ">
                         Projet précédent
-                    </a>
+                    </a> -->
 
                     <!-- Arrow up -->
                     <a (click)="scrollTo('projects')" class="cursor-pointer">
@@ -144,11 +133,11 @@ import { DataService, Projet } from 'src/app/core/data.service';
                                 d="M5 10l7-7m0 0l7 7m-7-7v18" />
                         </svg>
                     </a>
-                    <a
-                        [routerLink]="'/projects/' + project.previousProject"
+                    <!-- <a
+                        [routerLink]="['/projects/', project.nextProject]"
                         class="underlin pr-4 text-cream-75 transition-colors duration-300 hover:text-bancha-800 dark:text-white dark:hover:text-white sm:pr-32">
                         Projet suivant
-                    </a>
+                    </a> -->
                 </div>
             </div>
         </section>
@@ -165,20 +154,22 @@ export class ProjectComponent {
 
     constructor(
         private readonly projectService: DataService,
-        private readonly route: ActivatedRoute
+        private readonly route: ActivatedRoute,
+        private readonly router: Router
     ) {}
 
     ngOnInit() {
         this.project =
             this.projectService.getProject(
-                this.route.snapshot.paramMap.get('id') as string
+                this.route.snapshot.routeConfig?.path as string
             ) ?? ({} as Projet);
     }
 
     scrollTo(id: string) {
         const element = document.getElementById(id);
+        console.log('element', element);
         if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
+            element.scrollIntoView({ behavior: 'instant', block: 'start' });
         }
     }
 }
