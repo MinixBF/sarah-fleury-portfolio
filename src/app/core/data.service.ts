@@ -160,7 +160,8 @@ export class DataService {
                 'Nos clients viennent d’acheter un nouvel appartement dans lequel ils souhaitent voir grandir leurs enfants dans un espace plus fonctionnel et agréable à vivre que leur précédent appartement.<br/><br/>Malgré plusieurs esquisses proposant des aménagements bien différents de l’existant, les clients sont restés sur une proposition relativement proche de l’existant pour favoriser un plan avec une grande salle à manger et une cuisine semi séparée.<br/><br/>Concernant les ambiances, j’en suis pour le moment aux premières propositions avec dans l’idée de créer un environnement coloré et pétillant à l’image de nos clients.',
             shortDesc:
                 'Rénovation complète pour un appartement de 140m² - En cours',
-            credits: 'Fait pour l’agence Camille Hermand Architectures',
+            credits:
+                'Fait pour l’agence Camille Hermand Architectures, visuels 3D uniquement et réalisés avec Sketchup et Vray',
             nextProject: 'jeuneurs',
             previousProject: 'vienne',
             imagePath: 'assets/projects/mermoz/',
