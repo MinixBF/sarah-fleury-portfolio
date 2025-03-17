@@ -3,7 +3,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     selector: 'about-us',
-    standalone: true,
     imports: [CommonModule],
     template: `
         <section class="bg-cream-75 dark:bg-gray-900" id="about-us" #aboutUs>
@@ -57,6 +56,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             </div>
         </section>
     `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AboutUsComponent {}

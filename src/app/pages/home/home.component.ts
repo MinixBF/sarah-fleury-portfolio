@@ -7,7 +7,6 @@ import { SkillsComponent } from 'src/app/components/skills.component';
 
 @Component({
     selector: 'home',
-    standalone: true,
     imports: [
         SkillsComponent,
         AboutUsComponent,
@@ -123,7 +122,7 @@ import { SkillsComponent } from 'src/app/components/skills.component';
 
         <!-- About us  -->
         <about-us />
-    `,
+    `
 })
 export class HomeComponent {
     projects: any[] = [];

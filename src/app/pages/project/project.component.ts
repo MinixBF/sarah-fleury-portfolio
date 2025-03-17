@@ -17,7 +17,6 @@ import { DataService, Projet } from 'src/app/core/data.service';
 
 @Component({
     selector: 'project',
-    standalone: true,
     imports: [CommonModule, NgOptimizedImage, RouterModule],
     providers: [
         {
@@ -154,7 +153,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
             </div>
         </section>
     `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProjectComponent {
     @Input() projectId!: string;

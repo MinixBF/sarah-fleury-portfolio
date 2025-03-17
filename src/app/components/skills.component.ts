@@ -3,7 +3,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     selector: 'app-skills',
-    standalone: true,
     imports: [NgFor, NgClass, NgOptimizedImage],
     template: `
         <section class="bg-cream-75 dark:bg-gray-800" id="skills">
@@ -72,7 +71,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </section>
     `,
     styles: [],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkillsComponent {
     skills: Skill[] = [

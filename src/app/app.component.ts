@@ -30,7 +30,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'app-root',
-    standalone: true,
     templateUrl: './app.component.html',
     imports: [CommonModule, RouterOutlet, RouterModule, NgOptimizedImage],
     host: {
@@ -40,23 +39,19 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
         // Animation for the header when the toogleNavbar is true
         // Transiton height from fit-content to 100vh
         trigger('toggleNavbar', [
-            state(
-                'true',
-                style({
-                    height: '100%',
-                })
-            ),
+            state('true', style({
+                height: '100%',
+            })),
             transition('false => true', animate('300ms ease-in')),
             transition('true => false', animate('300ms ease-out')),
         ]),
-
         trigger('fadeIn', [
             transition(':enter', [
                 style({ opacity: 0 }),
                 animate('300ms', style({ opacity: 1 })),
             ]),
         ]),
-    ],
+    ]
 })
 export class AppComponent implements OnInit {
     currentYear = new Date().getFullYear();
