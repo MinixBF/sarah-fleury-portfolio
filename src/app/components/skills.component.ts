@@ -16,18 +16,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
                 </div>
                 <div>
                     <div
-                        class="grid-gap-16 grid cursor-pointer auto-cols-[minmax(300px,1fr)] grid-flow-col grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 overflow-x-auto
-                    pb-4 md:gap-8 xl:grid-cols-5">
+                        class="grid-gap-16 grid cursor-pointer auto-cols-[minmax(300px,1fr)] grid-flow-col grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 overflow-x-auto pb-4 md:gap-8 xl:grid-cols-5">
                         @for (item of skills; track $index) {
                             <div
                                 class="flex flex-col items-start justify-start gap-3 rounded-lg border-2 border-bancha-100 bg-white p-8 shadow-md dark:bg-gray-900"
                                 (click)="selectSkill($index)"
                                 [ngClass]="{
                                     'hover:border-bancha-600': !item.selected,
-                                    'border-bancha-600': item.selected
+                                    'border-bancha-600': item.selected,
                                 }">
                                 <span
-                                    class="text-2xl font-bold  tracking-tighter text-bancha-800 dark:text-white">
+                                    class="text-2xl font-bold tracking-tighter text-bancha-800 dark:text-white">
                                     {{ item.title }}
                                 </span>
                                 <p class="text-banch-700 dark:text-gray-400">
@@ -71,7 +70,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </section>
     `,
     styles: [],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SkillsComponent {
     skills: Skill[] = [
@@ -84,17 +83,17 @@ export class SkillsComponent {
             imagesPath: '/assets/skills/sketchup-vray/',
             gridClass: 'grid grid-cols-1 md:grid-rows-5 md:grid-cols-4',
             imagesGrid: [
-                { path: 'chambre_2_R4.webp', class: 'md:col-span-4' },
+                // { path: 'chambre_2_R4.webp', class: 'md:col-span-4' },
+                // { path: 'dressing_R5.webp', class: 'md:col-span-2' },
+                { path: 'chambre_tapis.webp', class: 'md:col-span-4' },
+                { path: 'SDB_R5.webp', class: 'md:col-span-2' },
                 {
                     path: 'SDB_R4.webp',
                     class: 'md:col-span-2 object-[39%]',
                 },
-                { path: 'dressing_R5.webp', class: 'md:col-span-2' },
-                { path: 'chambre_tapis.webp', class: 'md:col-span-4' },
-                { path: 'SDB_R5.webp', class: 'md:col-span-2' },
-                { path: 'chambre_R4.webp', class: 'md:col-span-2' },
-                { path: 'couloir_R5.webp', class: 'md:col-span-2' },
-                { path: 'buanderie_R4.webp', class: 'md:col-span-2' },
+                // { path: 'chambre_R4.webp', class: 'md:col-span-2' },
+                // { path: 'couloir_R5.webp', class: 'md:col-span-2' },
+                // { path: 'buanderie_R4.webp', class: 'md:col-span-2' },
                 { path: 'salon.webp', class: 'md:col-span-4' },
                 { path: 'SAM.webp', class: 'md:col-span-4' },
                 { path: 'salle_cinema_R5.webp', class: 'md:col-span-2' },

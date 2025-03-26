@@ -1,7 +1,7 @@
 import { DataService } from './../../core/data.service';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { AboutUsComponent } from 'src/app/components/about-us.component';
 import { SkillsComponent } from 'src/app/components/skills.component';
 
@@ -22,17 +22,13 @@ import { SkillsComponent } from 'src/app/components/skills.component';
                 class="mx-auto grid h-full max-w-screen-1xl px-16 py-32 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-6">
                 <div class="mr-auto place-self-center lg:col-span-6">
                     <h1
-                        class="mb-4 max-w-2xl font-satista text-5xl leading-none text-cream-75 dark:text-white md:text-6xl xl:text-7xl">
+                        class="mb-4 max-w-2xl font-satista text-5xl leading-none text-cream-75 md:text-6xl xl:text-7xl dark:text-white">
                         Sarah Fleury
                     </h1>
                     <p
-                        class="mb-6 max-w-2xl font-light text-cream-75 dark:text-gray-400 md:text-lg lg:mb-8 lg:text-xl ">
+                        class="mb-6 max-w-2xl font-light text-cream-75 md:text-lg lg:mb-8 lg:text-xl dark:text-gray-400">
                         Architecte d’intérieur diplômée de l’ENSAAMA Olivier de
-                        Serres depuis 2021. Je travaille en tant que cheffe de
-                        projet chez Camille Hermand Architectures depuis deux
-                        ans. J’ai pu y mener une dizaine de projets résidentiels
-                        allant de petites rénovations partielles d’appartements
-                        à des rénovations complètes de maisons.
+                        Serres.
                     </p>
                 </div>
                 <div class="lg:col-span-6 lg:mt-0 lg:place-self-center">
@@ -68,7 +64,7 @@ import { SkillsComponent } from 'src/app/components/skills.component';
         <div></div>
         <section class="bg-cream-75 dark:bg-gray-800" id="projects">
             <div
-                class="mx-auto  max-w-screen-1xl px-8 pb-8 pt-24 sm:py-16 lg:px-12 lg:py-32">
+                class="mx-auto max-w-screen-1xl px-8 pb-8 pt-24 sm:py-16 lg:px-12 lg:py-32">
                 <div class="mb-4 max-w-screen-md lg:mb-8">
                     <h2
                         class="font-satista text-5xl font-semibold text-bancha-800 dark:font-normal dark:text-white">
@@ -76,7 +72,7 @@ import { SkillsComponent } from 'src/app/components/skills.component';
                     </h2>
                 </div>
                 <div
-                    class="flex flex-col justify-center space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0 lg:grid-cols-4">
+                    class="flex flex-col justify-center space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0 lg:grid-cols-5">
                     @for (project of projects; track $index) {
                         <div
                             [id]="project.id"
@@ -85,14 +81,13 @@ import { SkillsComponent } from 'src/app/components/skills.component';
                                 [routerLink]="[project.link]"
                                 class="relative h-full w-full cursor-pointer">
                                 <div
-                                    class="absolute inset-0 z-10 flex h-full flex-col items-center justify-center rounded-lg bg-bancha-800 bg-opacity-90 text-center opacity-0 transition-opacity duration-300  ease-in-out
-                                        hover:opacity-100 max-md:h-[70vh]">
+                                    class="absolute inset-0 z-10 flex h-full flex-col items-center justify-center rounded-lg bg-bancha-800 bg-opacity-90 text-center opacity-0 transition-opacity duration-300 ease-in-out hover:opacity-100 max-md:h-[70vh]">
                                     <span
                                         class="text-xl tracking-wider text-cream-75">
                                         Voir le projet
                                     </span>
                                     <p
-                                        class="mx-auto mt-2 tracking-wider  text-cream-75">
+                                        class="mx-auto mt-2 tracking-wider text-cream-75">
                                         {{ project.shortDesc }}
                                     </p>
                                 </div>
@@ -106,9 +101,7 @@ import { SkillsComponent } from 'src/app/components/skills.component';
                             </a>
                             <a
                                 [routerLink]="[project.link]"
-                                class="hover:first-letter:text-primary-600 hover:text-primary-600 cursor-pointer text-2xl text-bancha-800
-                                    hover:underline dark:text-gray-400 dark:hover:text-white
-                                ">
+                                class="hover:first-letter:text-primary-600 hover:text-primary-600 cursor-pointer text-xl text-bancha-800 hover:underline dark:text-gray-400 dark:hover:text-white">
                                 {{ project.title }}
                             </a>
                         </div>
@@ -122,7 +115,7 @@ import { SkillsComponent } from 'src/app/components/skills.component';
 
         <!-- About us  -->
         <about-us />
-    `
+    `,
 })
 export class HomeComponent {
     projects: any[] = [];
@@ -130,4 +123,6 @@ export class HomeComponent {
     constructor(private _dataService: DataService) {
         this.projects = this._dataService.getProjectForHome();
     }
+
+    router = inject(Router);
 }

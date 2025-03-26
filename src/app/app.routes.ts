@@ -9,13 +9,7 @@ export const routes: Routes = [
     {
         path: 'projects',
         children: [
-            {
-                path: 'vienne',
-                loadComponent: () =>
-                    import('./pages/project/project.component').then(
-                        m => m.ProjectComponent
-                    ),
-            },
+            { path: '', redirectTo: '/', pathMatch: 'full' }, // Redirection
             {
                 path: 'jeuneurs',
                 loadComponent: () =>
@@ -32,6 +26,27 @@ export const routes: Routes = [
             },
             {
                 path: 'mermoz',
+                loadComponent: () =>
+                    import('./pages/project/project.component').then(
+                        m => m.ProjectComponent
+                    ),
+            },
+            {
+                path: 'amelot',
+                loadComponent: () =>
+                    import('./pages/project/project.component').then(
+                        m => m.ProjectComponent
+                    ),
+            },
+            {
+                path: 'damremont',
+                loadComponent: () =>
+                    import('./pages/project/project.component').then(
+                        m => m.ProjectComponent
+                    ),
+            },
+            {
+                path: 'neuilly',
                 loadComponent: () =>
                     import('./pages/project/project.component').then(
                         m => m.ProjectComponent

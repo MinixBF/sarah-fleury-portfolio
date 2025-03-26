@@ -4,6 +4,7 @@ import {
     RouterConfigOptions,
     provideRouter,
     withComponentInputBinding,
+    withEnabledBlockingInitialNavigation,
     withInMemoryScrolling,
     withRouterConfig,
     withViewTransitions,
@@ -16,19 +17,17 @@ const scrollConfig: InMemoryScrollingOptions = {
     scrollPositionRestoration: 'top',
 };
 
-const routerConfig: RouterConfigOptions = {
-    onSameUrlNavigation: 'reload',
-};
-
 export const appConfig: ApplicationConfig = {
     providers: [
-        provideAnimations(),
+        // provideAnimations(),
         provideRouter(
             routes,
-            withRouterConfig(routerConfig),
-            withInMemoryScrolling(scrollConfig),
-            withComponentInputBinding(),
-            withViewTransitions()
+            // withInMemoryScrolling({
+            //     // anchorScrolling: 'enabled',
+            //     scrollPositionRestoration: 'top',
+            // }),
+            // withEnabledBlockingInitialNavigation(),
+            withComponentInputBinding()
         ),
     ],
 };

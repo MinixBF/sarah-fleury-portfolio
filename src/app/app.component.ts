@@ -5,7 +5,11 @@ import {
     transition,
     animate,
 } from '@angular/animations';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import {
+    CommonModule,
+    NgOptimizedImage,
+    ViewportScroller,
+} from '@angular/common';
 import {
     Component,
     DestroyRef,
@@ -25,13 +29,13 @@ import {
     RouterModule,
     RouterOutlet,
 } from '@angular/router';
-import { filter } from 'rxjs';
+import { delay, filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    imports: [CommonModule, RouterOutlet, RouterModule, NgOptimizedImage],
+    imports: [CommonModule, RouterOutlet, RouterModule],
     host: {
         class: 'bg-cream-75 dark:bg-gray-800 h-full flex flex-col',
     },
@@ -39,9 +43,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
         // Animation for the header when the toogleNavbar is true
         // Transiton height from fit-content to 100vh
         trigger('toggleNavbar', [
-            state('true', style({
-                height: '100%',
-            })),
+            state(
+                'true',
+                style({
+                    height: '100%',
+                })
+            ),
             transition('false => true', animate('300ms ease-in')),
             transition('true => false', animate('300ms ease-out')),
         ]),
@@ -51,7 +58,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
                 animate('300ms', style({ opacity: 1 })),
             ]),
         ]),
-    ]
+    ],
 })
 export class AppComponent implements OnInit {
     currentYear = new Date().getFullYear();
@@ -73,6 +80,7 @@ export class AppComponent implements OnInit {
 
     private destroyRef = inject(DestroyRef);
     private router = inject(Router);
+    private viewportScroller = inject(ViewportScroller);
 
     @ViewChildren('navbarLinks') navbarLinks!: QueryList<ElementRef>;
     @ViewChild('navbarToggle') navbarToggle!: ElementRef;
@@ -80,35 +88,53 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
         // If router is home page display hero section
         // else hide hero section
+        // this.router.events
+        //     .pipe(
+        //         filter(event => event instanceof NavigationEnd),
+        //         takeUntilDestroyed(this.destroyRef)
+        //     )
+        //     .subscribe(event => {
+        //         if (this.navId !== null) {
+        //             const element = document.getElementById(this.navId);
+        //             setTimeout(() => {
+        //                 if (element) {
+        //                     element.scrollIntoView({
+        //                         behavior: 'smooth',
+        //                         block: 'start',
+        //                     });
+        //                     this.navId = null;
+        //                 }
+        //             }, 300);
+        //         } else {
+        //             window.scrollTo(0, 0);
+        //         }
+        //         const isHome =
+        //             (event as NavigationEnd).url === '/' ||
+        //             (event as NavigationEnd).url.startsWith('/#') ||
+        //             (event as NavigationEnd).url.startsWith('/%23');
+        //         this.isHome = isHome;
+        //     });
+        // this.isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
         this.router.events
             .pipe(
                 filter(event => event instanceof NavigationEnd),
                 takeUntilDestroyed(this.destroyRef)
             )
-            .subscribe(event => {
-                if (this.navId !== null) {
-                    const element = document.getElementById(this.navId);
-                    setTimeout(() => {
-                        if (element) {
-                            element.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start',
-                            });
-                            this.navId = null;
-                        }
-                    }, 300);
-                } else {
-                    window.scrollTo(0, 0);
-                }
-
-                const isHome =
-                    (event as NavigationEnd).url === '/' ||
-                    (event as NavigationEnd).url.startsWith('/#') ||
-                    (event as NavigationEnd).url.startsWith('/%23');
-                this.isHome = isHome;
+            .subscribe(() => {
+                setTimeout(() => {
+                    const scrollContainer =
+                        document.querySelector('.overflow-y-auto');
+                    if (scrollContainer) {
+                        scrollContainer.scrollTo({
+                            top: 0,
+                            behavior: 'smooth',
+                        });
+                    } else {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
             });
-
-        // this.isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
 
     scrollTo(id: string | undefined) {

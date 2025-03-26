@@ -1,33 +1,16 @@
-import { CommonModule, IMAGE_CONFIG, NgOptimizedImage } from '@angular/common';
+import { CommonModule, ViewportScroller } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     DestroyRef,
     Input,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import {
-    ActivatedRoute,
-    NavigationEnd,
-    Router,
-    RouterModule,
-} from '@angular/router';
-import { filter } from 'rxjs';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DataService, Projet } from 'src/app/core/data.service';
 
 @Component({
     selector: 'project',
-    imports: [CommonModule, NgOptimizedImage, RouterModule],
-    providers: [
-        {
-            provide: IMAGE_CONFIG,
-            useValue: {
-                breakpoints: [
-                    16, 48, 96, 128, 384, 640, 750, 828, 1080, 1200, 1920,
-                ],
-            },
-        },
-    ],
+    imports: [CommonModule, RouterModule],
     template: `
         <section class="bg-cream-75 dark:bg-gray-800" id="project">
             <div
@@ -53,13 +36,13 @@ import { DataService, Projet } from 'src/app/core/data.service';
                     [src]="project.imagePath + 'cover.webp'"
                     loading="lazy"
                     priority
-                    class="h-full rounded-lg"
+                    class="h-full rounded-lg object-cover"
                     alt="Sarah Fleury portrait" />
 
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col gap-4">
                         <h2
-                            class="whitespace-nowrap font-satista text-5xl font-semibold text-bancha-800 dark:font-normal dark:text-white">
+                            class="font-satista text-5xl font-semibold text-bancha-800 dark:font-normal dark:text-white">
                             {{ project.title }}
                         </h2>
                         <span
@@ -68,7 +51,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
                         </span>
                     </div>
                     <p
-                        class="text-1xl text-pretty text-bancha-700 dark:text-gray-400 lg:col-span-2"
+                        class="text-1xl text-pretty text-bancha-700 lg:col-span-2 dark:text-gray-400"
                         [innerHTML]="project.description">
                         <!-- Ajouter quand on est sur un petit écran, la possibilité de "voir plus" pour afficher le texte -->
                     </p>
@@ -84,7 +67,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
                 <div class="flex flex-col items-center gap-4">
                     <span
                         class="whitespace-nowrap font-satista text-4xl font-semibold text-bancha-800 dark:font-normal dark:text-white">
-                        Existant
+                        {{ project.leftTitle }}
                     </span>
                     <img
                         [src]="project.imagePath + existingPath + '.webp'"
@@ -96,7 +79,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
                 <div class="flex flex-col items-center gap-4">
                     <span
                         class="whitespace-nowrap font-satista text-4xl font-semibold text-bancha-800 dark:font-normal dark:text-white">
-                        Projet
+                        {{ project.rightTitle }}
                     </span>
                     <img
                         [src]="project.imagePath + proposalPath + '.webp'"
@@ -110,6 +93,12 @@ import { DataService, Projet } from 'src/app/core/data.service';
             <div
                 class="mx-auto grid max-w-screen-1xl grid-cols-1 gap-4 px-4 py-8 md:grid-cols-6">
                 @for (item of project.imagesGrid; track $index) {
+                    @if (item?.title) {
+                        <h2
+                            class="whitespace-nowrap font-satista text-4xl font-semibold text-bancha-800 md:col-span-6 dark:font-normal dark:text-white">
+                            {{ item.title }}
+                        </h2>
+                    }
                     <img
                         [src]="project.imageGridPath + item.path"
                         class="h-full rounded-lg object-cover"
@@ -122,7 +111,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
             <!-- Previous Projet - Back to top of project - Next Projet -->
             <div class="mx-auto max-w-screen-1xl px-4">
                 <div
-                    class="flex h-12 w-full items-center justify-center  rounded-lg bg-bancha-500 dark:bg-gray-900">
+                    class="flex h-12 w-full items-center justify-center rounded-lg bg-bancha-500 dark:bg-gray-900">
                     <!-- <a
                         [routerLink]="['/projects/', project.previousProject]"
                         class="pl-4 text-cream-75 underline transition-colors duration-300 hover:text-bancha-800 dark:text-white dark:hover:text-white sm:pl-32 ">
@@ -153,7 +142,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
             </div>
         </section>
     `,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectComponent {
     @Input() projectId!: string;
@@ -167,7 +156,8 @@ export class ProjectComponent {
         private readonly projectService: DataService,
         private readonly route: ActivatedRoute,
         private readonly router: Router,
-        private readonly destroyRef: DestroyRef
+        private readonly destroyRef: DestroyRef,
+        private viewportScroller: ViewportScroller
     ) {}
 
     ngOnInit() {
@@ -175,17 +165,6 @@ export class ProjectComponent {
             this.projectService.getProject(
                 this.route.snapshot.routeConfig?.path as string
             ) ?? ({} as Projet);
-
-        this.router.events
-            .pipe(
-                filter(event => event instanceof NavigationEnd),
-                takeUntilDestroyed(this.destroyRef)
-            )
-            .subscribe(() => {
-                // Scroll to the top of the page
-                console.log('scrolling to top');
-                window.scrollTo(0, 0);
-            });
     }
 
     scrollTo(id: string) {

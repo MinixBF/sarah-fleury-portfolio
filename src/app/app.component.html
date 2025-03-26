@@ -12,12 +12,12 @@
         [@toggleNavbar]="toggleNavbar"
         #navbar
         [ngClass]="{ 'backdrop-blur-lg': toggleNavbar }"
-        class="fixed left-0 right-0 start-0 top-0 z-20 h-[8%] w-full border-b mix-blend-hard-light shadow-sm backdrop-blur dark:border-gray-600 dark:bg-gray-900 md:!max-h-[6%]">
+        class="fixed left-0 right-0 start-0 top-0 z-20 h-[8%] w-full border-b mix-blend-hard-light shadow-sm backdrop-blur md:!max-h-[6%] dark:border-gray-600 dark:bg-gray-900">
         <div
             class="relative mx-auto flex max-w-screen-1xl flex-wrap items-center justify-center p-4 md:h-full">
             <a
                 [routerLink]="['']"
-                class="absolute left-8 flex items-center space-x-3 rtl:space-x-reverse xl:left-0">
+                class="absolute left-8 flex items-center space-x-3 xl:left-0 rtl:space-x-reverse">
                 <img
                     src="assets/LOGO_BANCHA.svg"
                     class="h-9 dark:hidden"
@@ -36,7 +36,7 @@
                     #navbarToggle
                     data-collapse-toggle="navbar-sticky"
                     type="button"
-                    class="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-bancha-800 hover:bg-bancha-500 focus:outline-none focus:ring-2 focus:ring-bancha-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
+                    class="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-bancha-800 hover:bg-bancha-500 focus:outline-none focus:ring-2 focus:ring-bancha-200 md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     aria-controls="navbar-sticky"
                     (click)="toggleNavbar = !toggleNavbar"
                     aria-expanded="false">
@@ -59,13 +59,13 @@
                 class="hidden h-full w-full items-center justify-center md:order-1 md:flex md:w-auto"
                 id="navbar-sticky">
                 <ul
-                    class="mt-4 flex h-full flex-col items-center justify-center rounded-lg border font-medium rtl:space-x-reverse dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:dark:bg-gray-900">
+                    class="mt-4 flex h-full flex-col items-center justify-center rounded-lg border font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 rtl:space-x-reverse dark:border-gray-700 dark:bg-gray-800 md:dark:bg-gray-900">
                     @for (item of navBar; track $index) {
                         <li>
                             <a
                                 (click)="scrollTo(item.scrollTo)"
                                 #navbarLinks
-                                class="block cursor-pointer rounded px-3 py-2 font-semibold text-bancha-800 transition-colors duration-150 ease-in-out hover:text-bancha-900 dark:text-cream-75 dark:hover:text-cream-100 md:bg-transparent md:p-0"
+                                class="block cursor-pointer rounded px-3 py-2 font-semibold text-bancha-800 transition-colors duration-150 ease-in-out hover:text-bancha-900 md:bg-transparent md:p-0 dark:text-cream-75 dark:hover:text-cream-100"
                                 routerLinkActive="text-bancha-900 !font-semibold">
                                 {{ item.name }}
                             </a>
@@ -96,18 +96,15 @@
         }
     </nav>
 </header>
-<div
-    class="flex h-full flex-col overflow-y-auto"
-    [ngClass]="{ '': toggleNavbar }"
-    @fadeIn>
-    <router-outlet class="h-full"></router-outlet>
-    <footer class="bg-cream-75 p-4 dark:bg-gray-800 sm:p-6">
+<div class="flex h-full flex-col overflow-y-auto" @fadeIn>
+    <router-outlet class="h-full" #outlet></router-outlet>
+    <footer class="bg-cream-75 p-4 sm:p-6 dark:bg-gray-800">
         <div class="mx-auto max-w-screen-1xl">
             <hr
-                class="my-6 border-bancha-800 dark:border-gray-700 sm:mx-auto lg:my-8" />
+                class="my-6 border-bancha-800 sm:mx-auto lg:my-8 dark:border-gray-700" />
             <div class="flex items-center justify-between">
                 <span
-                    class="text-sm text-bancha-800 dark:text-gray-400 sm:text-center">
+                    class="text-sm text-bancha-800 sm:text-center dark:text-gray-400">
                     © {{ currentYear }}
                     <a href="/" class="hover:underline">Sarah Fleury</a>
                 </span>
