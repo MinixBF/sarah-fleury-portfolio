@@ -72,7 +72,6 @@ export class AppComponent implements OnInit {
     isMobile: Signal<boolean> = signal(window.innerWidth < 768);
 
     navBar = [
-        { name: 'Accueil', scrollTo: 'home' },
         { name: 'Projets', scrollTo: 'projects' },
         { name: 'Compétences', scrollTo: 'skills' },
         { name: 'A propos', scrollTo: 'about-us' },

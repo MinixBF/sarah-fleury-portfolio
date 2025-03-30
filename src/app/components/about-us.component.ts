@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     template: `
         <section class="bg-cream-75 dark:bg-gray-900" id="about-us" #aboutUs>
             <div
-                class="mx-auto max-w-screen-1xl px-8 pb-8 pt-24 sm:py-16 lg:px-12 lg:py-32">
+                class="mx-auto max-w-screen-1xl px-4 pb-8 pt-24 sm:py-16 lg:px-12 lg:py-32">
                 <div class="flex flex-col gap-16 sm:flex-row">
                     <div class="flex flex-col">
                         <h2
@@ -15,7 +15,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
                             A Propos
                         </h2>
                         <p
-                            class="text-pretty text-base text-bancha-700  dark:text-gray-400 md:text-xl lg:col-span-2">
+                            class="text-pretty text-base text-bancha-700 md:text-xl lg:col-span-2 dark:text-gray-400">
                             Je suis persuadée qu’évoluer dans des espaces
                             esthétiques et bien pensés nous ressource et
                             améliore notre état d’esprit. C’est pourquoi j’ai
@@ -37,11 +37,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
                                 target="_blank"
                                 download="CV_Sarah_FLEURY.pdf"
                                 title="Télécharger mon CV"
-                                class="mt-8 flex w-fit cursor-pointer items-center justify-center rounded-lg bg-bancha-600 p-2 px-4 text-cream-75
-                          transition-colors duration-300 hover:bg-bancha-800
-                          focus:outline-none focus:ring-2 focus:ring-bancha-300
-                          dark:bg-bancha-700 dark:hover:bg-bancha-800
-                          dark:focus:ring-bancha-800">
+                                class="mt-8 flex w-fit cursor-pointer items-center justify-center rounded-lg bg-bancha-600 p-2 px-4 text-cream-75 transition-colors duration-300 hover:bg-bancha-800 focus:outline-none focus:ring-2 focus:ring-bancha-300 dark:bg-bancha-700 dark:hover:bg-bancha-800 dark:focus:ring-bancha-800">
                                 Télécharger mon CV
                             </a>
                         </div>
@@ -56,6 +52,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             </div>
         </section>
     `,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AboutUsComponent {}

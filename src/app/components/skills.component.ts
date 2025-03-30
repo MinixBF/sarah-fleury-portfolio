@@ -1,9 +1,9 @@
-import { NgClass, NgFor, NgOptimizedImage } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     selector: 'app-skills',
-    imports: [NgFor, NgClass, NgOptimizedImage],
+    imports: [NgClass],
     template: `
         <section class="bg-cream-75 dark:bg-gray-800" id="skills">
             <div
@@ -19,19 +19,30 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
                         class="grid-gap-16 grid cursor-pointer auto-cols-[minmax(300px,1fr)] grid-flow-col grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 overflow-x-auto pb-4 md:gap-8 xl:grid-cols-5">
                         @for (item of skills; track $index) {
                             <div
-                                class="flex flex-col items-start justify-start gap-3 rounded-lg border-2 border-bancha-100 bg-white p-8 shadow-md dark:bg-gray-900"
+                                class="group flex flex-col items-start justify-between gap-3 rounded-lg border-2 border-bancha-100 bg-white p-8 shadow-md dark:bg-gray-900"
                                 (click)="selectSkill($index)"
                                 [ngClass]="{
                                     'hover:border-bancha-600': !item.selected,
                                     'border-bancha-600': item.selected,
                                 }">
-                                <span
-                                    class="text-2xl font-bold tracking-tighter text-bancha-800 dark:text-white">
-                                    {{ item.title }}
-                                </span>
-                                <p class="text-banch-700 dark:text-gray-400">
-                                    {{ item.description }}
-                                </p>
+                                <div>
+                                    <span
+                                        class="text-2xl font-bold tracking-tighter text-bancha-800 dark:text-white">
+                                        {{ item.title }}
+                                    </span>
+                                    <p
+                                        class="text-banch-700 dark:text-gray-400">
+                                        {{ item.description }}
+                                    </p>
+                                </div>
+                                <a
+                                    [ngClass]="{
+                                        'opacity-100': !item.selected,
+                                        'opacity-0': item.selected,
+                                    }"
+                                    class="flex w-full justify-end text-sm font-bold tracking-tighter text-bancha-800 opacity-100 transition-opacity duration-200 ease-in-out group-hover:text-bancha-900 dark:text-white">
+                                    Afficher
+                                </a>
                             </div>
                         }
                     </div>

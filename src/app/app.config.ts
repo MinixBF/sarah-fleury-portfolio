@@ -19,7 +19,7 @@ const scrollConfig: InMemoryScrollingOptions = {
 
 export const appConfig: ApplicationConfig = {
     providers: [
-        // provideAnimations(),
+        provideAnimations(),
         provideRouter(
             routes,
             // withInMemoryScrolling({

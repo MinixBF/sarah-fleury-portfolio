@@ -1,12 +1,3 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 <header>
     <nav
         [@toggleNavbar]="toggleNavbar"
@@ -14,7 +5,7 @@
         [ngClass]="{ 'backdrop-blur-lg': toggleNavbar }"
         class="fixed left-0 right-0 start-0 top-0 z-20 h-[8%] w-full border-b mix-blend-hard-light shadow-sm backdrop-blur md:!max-h-[6%] dark:border-gray-600 dark:bg-gray-900">
         <div
-            class="relative mx-auto flex max-w-screen-1xl flex-wrap items-center justify-center p-4 md:h-full">
+            class="relative mx-auto flex max-w-screen-1xl flex-wrap items-center justify-end p-4 md:h-full">
             <a
                 [routerLink]="['']"
                 class="absolute left-8 flex items-center space-x-3 xl:left-0 rtl:space-x-reverse">
@@ -86,7 +77,7 @@
                             (click)="toggleNavbar = !toggleNavbar"
                             (click)="scrollTo(item.scrollTo)"
                             #navbarLinks
-                            class="block cursor-pointer rounded px-3 py-2 font-satista text-5xl font-bold text-bancha-800 transition-colors duration-150 ease-in-out hover:text-bancha-900 md:p-0"
+                            class="block cursor-pointer rounded px-3 py-2 font-satista text-5xl font-normal tracking-wider text-bancha-800 transition-colors duration-150 ease-in-out hover:text-bancha-900 md:p-0"
                             routerLinkActive="text-bacnha-900 !font-semibold">
                             {{ item.name }}
                         </a>
@@ -108,11 +99,11 @@
                     © {{ currentYear }}
                     <a href="/" class="hover:underline">Sarah Fleury</a>
                 </span>
-                <!-- <div class="flex space-x-6">
-                  <a class="text-bancha-800 dark:text-gray-400">
-                      Mention légales
-                  </a>
-              </div> -->
+                <div class="quick-flip flex space-x-6">
+                    <a class="text-sm text-bancha-800 dark:text-gray-400">
+                        Created by Benjamin Ferré
+                    </a>
+                </div>
             </div>
         </div>
     </footer>

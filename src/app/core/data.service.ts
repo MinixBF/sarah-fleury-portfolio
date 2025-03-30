@@ -9,6 +9,7 @@ export class DataService {
     projets: Projet[] = [
         {
             id: 'jeuneurs',
+            titleFrontPage: 'Jeuneurs',
             title: 'Jeuneurs',
             description:
                 "Nos clients ont acheté ce bien dans le but d’en faire un véritable projet de vie. Ils ont souhaité transformer un appartement classique et vieillot pour en faire un appartement moderne adapté à leur mode de vie. Les dégagements inutiles ont été supprimés pour créer de grands espaces ouverts et lumineux.<br/><br/>Sur ce projet, je suis intervenue principalement durant le suivi de chantier et pour apporter les dernières précisions aux dessins des menuiseries et aux choix esthétiques. Les clients sont restés très ouverts à mes propositions allant des peintures jusqu'aux détails des poignées de menuiseries en passant par le mobilier et les luminaires.",
@@ -58,6 +59,7 @@ export class DataService {
         },
         {
             id: 'republique',
+            titleFrontPage: 'République',
             title: 'République',
             description:
                 "Lorsque les clients ont acheté ce bien, le plan était déjà fonctionnel. Cependant, l’appartement manquait de charme et les bibliothèques étaient trop importantes pour les besoins de nos clients.<br/><br/>Hormis les salles d'eau, j'ai pu travailler sur l'ensemble des menuiseries existantes et en créer de nouvelles. De nombreux rangements fermés ont été ajoutés pour permettre de cacher les objets du quotidien.<br/><br/>Et côté ambiance, la cliente étant peintre avec une grande sensibilité pour les couleurs douces et naturelles, j'ai pu l'accompagner dans le choix d'une palette cohérente et chaleureuse sur l’ensemble de l’appartement.",
@@ -227,7 +229,9 @@ export class DataService {
         // },
         {
             id: 'amelot',
+            titleFrontPage: 'Amelot',
             title: 'Amelot - en cours',
+            inProgress: true,
             description:
                 'Dans le cadre de ce projet, notre cliente a eu l’opportunité de racheter les combles situées au-dessus de son appartement, ce qui lui a permis de profiter pleinement de l’espace disponible. Les poutres apparentes et les volumes généreux sous plafond apportent un charme indéniable à l’ensemble de l’appartement.<br/><br/>Concernant l’aménagement, nous avons modifié le cloisonnement afin de créer une cuisine séparée, entièrement équipée, une salle de douche spacieuse, ainsi qu’une mezzanine destinée à un couchage d’appoint, venant compléter la chambre principale.',
             shortDesc:
@@ -243,57 +247,59 @@ export class DataService {
             imagesGrid: [
                 {
                     path: '01_fin_de_chantier.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Mezzanine',
                 },
                 {
                     path: '02_fin-de-chantier.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Cuisine',
                 },
                 {
                     path: '03_fin-de-chantier.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Chambre',
                 },
                 {
                     path: '04_fin-de-chantier.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'SDD',
                 },
                 {
                     path: '05_pendant.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Chantier',
                     class: 'md:col-span-2',
                     title: 'Aperçu du chantier',
                 },
                 {
                     path: '06_pendant.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Chantier',
                     class: 'md:col-span-2',
                 },
                 {
                     path: '07_pendant.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Chantier',
                     class: 'md:col-span-2',
                 },
                 {
                     path: '08_existant.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Existant',
                     class: 'md:col-span-2',
                     title: 'Existant',
                 },
                 {
                     path: '09_existant.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Existant',
                     class: 'md:col-span-2',
                 },
                 {
                     path: '10_existant.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Existant',
                     class: 'md:col-span-2',
                 },
             ],
         },
         {
             id: 'damremont',
+            titleFrontPage: 'Damremont',
             title: 'Damremont - en cours',
+            inProgress: true,
             description:
                 'Cet appartement, initialement sombre et marqué par un style d’une autre époque, nécessitait une transformation pour répondre aux besoins d’une vie de famille moderne. Afin de rendre l’espace plus agréable et fonctionnel, nous avons proposé un plan traversant qui favorise un espace de vie à la fois spacieux et lumineux.<br/><br/>Nous avons conservé le petit dégagement qui dessert la zone dédiée aux enfants, comprenant une chambre, une salle de bain et des WC. De l’autre côté, nous avons aménagé une vaste suite parentale, offrant ainsi un équilibre harmonieux entre les espaces privés et communs.<br/><br/>J’ai suivi ce projet de la phase esquisse jusqu’à la fin de chantier.',
             shortDesc: "Rénovation complète d'un appartement de 130m²",
@@ -308,23 +314,23 @@ export class DataService {
             imagesGrid: [
                 {
                     path: '01_fin_chantier.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Bibliothèque',
                 },
                 {
                     path: '02_fin_chantier.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Bibliothèque',
                 },
                 {
                     path: '02b_fin_chantier.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Cuisine',
                 },
                 {
                     path: '03_fin_chantier.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Chambre parent',
                 },
                 {
                     path: '04_fin_chantier.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Chambre parent',
                 },
                 {
                     path: '05_fin_chantier.webp',
@@ -332,34 +338,36 @@ export class DataService {
                 },
                 {
                     path: '06_pendant.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Chantier',
                     title: 'Aperçu du chantier',
                 },
                 {
                     path: '07_pendant.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Chantier',
                 },
                 {
                     path: '08_existant.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Existant',
                     class: 'md:col-span-2',
                     title: 'Existant',
                 },
                 {
                     path: '09_existant.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Existant',
                     class: 'md:col-span-2',
                 },
                 {
                     path: '10_existant.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Existant',
                     class: 'md:col-span-2',
                 },
             ],
         },
         {
             id: 'neuilly',
+            titleFrontPage: 'Neuilly',
             title: 'Neuilly - en cours',
+            inProgress: true,
             description:
                 'Cet appartement, initialement sombre et marqué par un style d’une autre époque, nécessitait une transformation pour répondre aux besoins d’une vie de famille moderne. Afin de rendre l’espace plus agréable et fonctionnel, nous avons proposé un plan traversant qui favorise un espace de vie à la fois spacieux et lumineux.<br/><br/>Nous avons conservé le petit dégagement qui dessert la zone dédiée aux enfants, comprenant une chambre, une salle de bain et des WC. De l’autre côté, nous avons aménagé une vaste suite parentale, offrant ainsi un équilibre harmonieux entre les espaces privés et communs.<br/><br/>J’ai suivi ce projet de la phase esquisse jusqu’à la fin de chantier.',
             shortDesc: "Rénovation complète d'un appartement de 130m²",
@@ -374,51 +382,53 @@ export class DataService {
             imagesGrid: [
                 {
                     path: '01_fin-de-chantier.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'SDD',
+                    class: 'md:col-span-2',
                 },
                 {
                     path: '02_fin-de-chantier.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Chambre parent',
+                    class: 'md:col-span-4',
                 },
                 {
                     path: '03_fin-de-chantier.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Terrasse',
                 },
                 {
                     path: '03b_fin-de-chantier.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Salon',
                 },
                 {
                     path: '04_fin-de-chantier.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Salon',
                 },
                 {
                     path: '05_pendant.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Extérieur',
                 },
                 {
                     path: '06_pendant.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Chantier',
                     title: 'Aperçu du chantier',
                 },
                 {
                     path: '07_pendant.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Chantier',
                 },
                 {
                     path: '07_existant.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Existant',
                     title: 'Existant',
                     class: 'md:col-span-2',
                 },
                 {
                     path: '08_existant.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Existant',
                     class: 'md:col-span-2',
                 },
                 {
                     path: '09_existant.webp',
-                    alt: 'Chambre enfant',
+                    alt: 'Existant',
                     class: 'md:col-span-2',
                 },
             ],
@@ -438,12 +448,13 @@ export class DataService {
     getProjectForHome(): any[] {
         return this.projets.map(projet => {
             return {
-                title: projet.title,
+                title: projet.titleFrontPage,
                 id: projet.id,
                 link: `/projects/${projet.id}`,
                 coverImagePath: projet.imagePath + 'couverture.webp',
                 shortDesc: projet.shortDesc,
                 class: projet.id !== 'mermoz' ? 'object-fill' : '',
+                isInProgress: projet.inProgress ?? false,
             };
         });
     }
@@ -451,6 +462,7 @@ export class DataService {
 
 export type Projet = {
     id: string;
+    titleFrontPage: string;
     title: string;
     description?: string;
     shortDesc?: string;
@@ -463,6 +475,7 @@ export type Projet = {
     imagesGrid?: ImageProject[];
     previousProject?: string;
     nextProject?: string;
+    inProgress?: boolean;
 };
 
 export type ImageProject = {
