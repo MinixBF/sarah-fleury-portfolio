@@ -16,7 +16,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
             <div
                 class="relative mx-auto flex max-w-screen-1xl flex-col gap-4 px-8 py-24 lg:grid lg:grid-cols-2 lg:gap-8">
                 <a
-                    [routerLink]="['', '#projects']"
+                    [routerLink]="['', 'projects']"
                     class="col-span-2 flex items-center gap-2 whitespace-nowrap text-lg font-semibold text-bancha-800 underline hover:text-bancha-900 dark:font-normal dark:text-white">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

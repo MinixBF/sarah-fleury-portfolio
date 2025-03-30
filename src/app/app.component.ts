@@ -120,19 +120,35 @@ export class AppComponent implements OnInit {
                 filter(event => event instanceof NavigationEnd),
                 takeUntilDestroyed(this.destroyRef)
             )
-            .subscribe(() => {
-                setTimeout(() => {
-                    const scrollContainer =
-                        document.querySelector('.overflow-y-auto');
-                    if (scrollContainer) {
-                        scrollContainer.scrollTo({
-                            top: 0,
-                            behavior: 'smooth',
-                        });
-                    } else {
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-                });
+            .subscribe(event => {
+                console.log(event);
+
+                if (event.url === '/projects') {
+                    setTimeout(() => {
+                        this.scrollTo('projects');
+                    }, 200);
+                } else if (event.url === '/skills') {
+                    setTimeout(() => {
+                        this.scrollTo('skills');
+                    }, 200);
+                } else if (event.url === '/about-us') {
+                    setTimeout(() => {
+                        this.scrollTo('about-us');
+                    }, 200);
+                } else {
+                    setTimeout(() => {
+                        const scrollContainer =
+                            document.querySelector('.overflow-y-auto');
+                        if (scrollContainer) {
+                            scrollContainer.scrollTo({
+                                top: 0,
+                                behavior: 'smooth',
+                            });
+                        } else {
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+                    });
+                }
             });
     }
 
@@ -145,9 +161,6 @@ export class AppComponent implements OnInit {
         if (element) {
             console.log('scrolling to', id);
             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-            this.router.navigate(['']);
-            this.navId = id;
         }
     }
 }
