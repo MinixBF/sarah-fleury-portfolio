@@ -1,6 +1,6 @@
-# AngularV17Template
+# Sarah Fleury Portfolio
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.1.
+This project runs on [Angular](https://angular.dev) **21** with zoneless change detection and signal-based component APIs. The Angular CLI version used is `21.2.12`.
 
 ## Development server
 

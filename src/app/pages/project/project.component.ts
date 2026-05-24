@@ -1,10 +1,5 @@
 import { CommonModule, ViewportScroller } from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    DestroyRef,
-    Input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, input, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DataService, Projet } from 'src/app/core/data.service';
 
@@ -145,20 +140,18 @@ import { DataService, Projet } from 'src/app/core/data.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectComponent {
-    @Input() projectId!: string;
+    private readonly projectService = inject(DataService);
+    private readonly route = inject(ActivatedRoute);
+    private readonly router = inject(Router);
+    private readonly destroyRef = inject(DestroyRef);
+    private viewportScroller = inject(ViewportScroller);
+
+    readonly projectId = input.required<string>();
 
     project!: Projet;
 
     proposalPath = 'proposal';
     existingPath = 'existing';
-
-    constructor(
-        private readonly projectService: DataService,
-        private readonly route: ActivatedRoute,
-        private readonly router: Router,
-        private readonly destroyRef: DestroyRef,
-        private viewportScroller: ViewportScroller
-    ) {}
 
     ngOnInit() {
         this.project =

@@ -1,6 +1,6 @@
 import { DataService } from './../../core/data.service';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AboutUsComponent } from 'src/app/components/about-us.component';
 import { SkillsComponent } from 'src/app/components/skills.component';
@@ -8,6 +8,7 @@ import { SkillsComponent } from 'src/app/components/skills.component';
 @Component({
     selector: 'home',
     imports: [SkillsComponent, AboutUsComponent, CommonModule, RouterModule],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
         <section
             class="relative h-[100svh] bg-bancha-500 dark:bg-gray-900"
@@ -134,9 +135,11 @@ import { SkillsComponent } from 'src/app/components/skills.component';
     `,
 })
 export class HomeComponent {
+    private _dataService = inject(DataService);
+
     projects: any[] = [];
 
-    constructor(private _dataService: DataService) {
+    constructor() {
         this.projects = this._dataService.getProjectForHome();
     }
 

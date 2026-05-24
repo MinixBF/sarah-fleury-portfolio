@@ -1,9 +1,8 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     selector: 'about-us',
-    imports: [CommonModule],
+    imports: [],
     template: `
         <section class="bg-cream-75 dark:bg-gray-900" id="about-us" #aboutUs>
             <div
