@@ -5,23 +5,20 @@ import {
     transition,
     animate,
 } from '@angular/animations';
+import { CommonModule } from '@angular/common';
 import {
-    CommonModule,
-    NgOptimizedImage,
-    ViewportScroller,
-} from '@angular/common';
-import {
+    afterNextRender,
+    ChangeDetectionStrategy,
     Component,
     DestroyRef,
     ElementRef,
-    HostListener,
+    Injector,
     OnInit,
-    QueryList,
     Signal,
-    ViewChild,
-    ViewChildren,
     inject,
     signal,
+    viewChild,
+    viewChildren,
 } from '@angular/core';
 import {
     NavigationEnd,
@@ -29,7 +26,7 @@ import {
     RouterModule,
     RouterOutlet,
 } from '@angular/router';
-import { delay, filter } from 'rxjs';
+import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -40,8 +37,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
         class: 'bg-cream-75 dark:bg-gray-800 h-full flex flex-col',
     },
     animations: [
-        // Animation for the header when the toogleNavbar is true
-        // Transiton height from fit-content to 100vh
         trigger('toggleNavbar', [
             state(
                 'true',
@@ -59,108 +54,68 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
             ]),
         ]),
     ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
-    currentYear = new Date().getFullYear();
+    private readonly destroyRef = inject(DestroyRef);
+    private readonly router = inject(Router);
+    private readonly injector = inject(Injector);
 
-    skill = signal('photoshop');
-    skillCount = signal(0);
+    readonly currentYear = new Date().getFullYear();
 
-    isHome: boolean = true;
-    navId: string | null = null;
-    toggleNavbar: boolean = false;
-    isMobile: Signal<boolean> = signal(window.innerWidth < 768);
+    readonly toggleNavbar = signal(false);
+    readonly isMobile: Signal<boolean> = signal(window.innerWidth < 768);
 
-    navBar = [
+    readonly navBar = [
         { name: 'Projets', scrollTo: 'projects' },
         { name: 'Compétences', scrollTo: 'skills' },
         { name: 'A propos', scrollTo: 'about-us' },
     ];
 
-    private destroyRef = inject(DestroyRef);
-    private router = inject(Router);
-    private viewportScroller = inject(ViewportScroller);
-
-    @ViewChildren('navbarLinks') navbarLinks!: QueryList<ElementRef>;
-    @ViewChild('navbarToggle') navbarToggle!: ElementRef;
+    readonly navbarLinks = viewChildren<ElementRef>('navbarLinks');
+    readonly navbarToggle = viewChild.required<ElementRef>('navbarToggle');
 
     ngOnInit(): void {
-        // If router is home page display hero section
-        // else hide hero section
-        // this.router.events
-        //     .pipe(
-        //         filter(event => event instanceof NavigationEnd),
-        //         takeUntilDestroyed(this.destroyRef)
-        //     )
-        //     .subscribe(event => {
-        //         if (this.navId !== null) {
-        //             const element = document.getElementById(this.navId);
-        //             setTimeout(() => {
-        //                 if (element) {
-        //                     element.scrollIntoView({
-        //                         behavior: 'smooth',
-        //                         block: 'start',
-        //                     });
-        //                     this.navId = null;
-        //                 }
-        //             }, 300);
-        //         } else {
-        //             window.scrollTo(0, 0);
-        //         }
-        //         const isHome =
-        //             (event as NavigationEnd).url === '/' ||
-        //             (event as NavigationEnd).url.startsWith('/#') ||
-        //             (event as NavigationEnd).url.startsWith('/%23');
-        //         this.isHome = isHome;
-        //     });
-        // this.isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
         this.router.events
             .pipe(
                 filter(event => event instanceof NavigationEnd),
                 takeUntilDestroyed(this.destroyRef)
             )
             .subscribe(event => {
-                console.log(event);
-
-                if (event.url === '/projects') {
-                    setTimeout(() => {
-                        this.scrollTo('projects');
-                    }, 200);
-                } else if (event.url === '/skills') {
-                    setTimeout(() => {
-                        this.scrollTo('skills');
-                    }, 200);
-                } else if (event.url === '/about-us') {
-                    setTimeout(() => {
-                        this.scrollTo('about-us');
-                    }, 200);
-                } else {
-                    setTimeout(() => {
-                        const scrollContainer =
-                            document.querySelector('.overflow-y-auto');
-                        if (scrollContainer) {
-                            scrollContainer.scrollTo({
+                const scrollTargets: Record<string, string> = {
+                    '/projects': 'projects',
+                    '/skills': 'skills',
+                    '/about-us': 'about-us',
+                };
+                const target = scrollTargets[event.url];
+                afterNextRender(
+                    () => {
+                        if (target) {
+                            this.scrollTo(target);
+                        } else {
+                            const scrollContainer =
+                                document.querySelector('.overflow-y-auto');
+                            (scrollContainer ?? window).scrollTo({
                                 top: 0,
                                 behavior: 'smooth',
                             });
-                        } else {
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
                         }
-                    });
-                }
+                    },
+                    { injector: this.injector }
+                );
             });
     }
 
-    scrollTo(id: string | undefined) {
-        if (id === undefined) {
+    onToggleNavbar(): void {
+        this.toggleNavbar.update(value => !value);
+    }
+
+    scrollTo(id: string | undefined): void {
+        if (!id) {
             return;
         }
-
-        const element = document.getElementById(id);
-        if (element) {
-            console.log('scrolling to', id);
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        document
+            .getElementById(id)
+            ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }

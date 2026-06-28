@@ -1,8 +1,8 @@
 <header>
     <nav
-        [@toggleNavbar]="toggleNavbar"
+        [@toggleNavbar]="toggleNavbar()"
         #navbar
-        [ngClass]="{ 'backdrop-blur-lg': toggleNavbar }"
+        [ngClass]="{ 'backdrop-blur-lg': toggleNavbar() }"
         class="fixed left-0 right-0 start-0 top-0 z-20 h-[8%] w-full border-b mix-blend-hard-light shadow-sm backdrop-blur md:!max-h-[6%] dark:border-gray-600 dark:bg-gray-900">
         <div
             class="relative mx-auto flex max-w-screen-1xl flex-wrap items-center justify-end p-4 md:h-full">
@@ -29,7 +29,7 @@
                     type="button"
                     class="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-bancha-800 hover:bg-bancha-500 focus:outline-none focus:ring-2 focus:ring-bancha-200 md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     aria-controls="navbar-sticky"
-                    (click)="toggleNavbar = !toggleNavbar"
+                    (click)="onToggleNavbar()"
                     aria-expanded="false">
                     <svg
                         class="h-5 w-5"
@@ -66,7 +66,7 @@
             </div>
             <!-- ACTIONS -->
         </div>
-        @if (toggleNavbar) {
+        @if (toggleNavbar()) {
             <!-- Nav Bar Menu -->
             <ul
                 class="my-auto flex h-[84%] flex-col items-center justify-center gap-[15%] font-medium">
@@ -74,7 +74,7 @@
                     <li>
                         <a
                             @fadeIn
-                            (click)="toggleNavbar = !toggleNavbar"
+                            (click)="onToggleNavbar()"
                             [routerLink]="['', item.scrollTo]"
                             #navbarLinks
                             class="block cursor-pointer rounded px-3 py-2 font-satista text-5xl font-normal tracking-wider text-bancha-800 transition-colors duration-150 ease-in-out hover:text-bancha-900 md:p-0"
