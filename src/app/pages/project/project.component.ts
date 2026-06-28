@@ -1,7 +1,7 @@
 import { CommonModule, ViewportScroller } from '@angular/common';
-import { ChangeDetectionStrategy, Component, DestroyRef, input, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, input, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { DataService, Projet } from 'src/app/core/data.service';
+import { DataService, Projet } from '../../core/data.service';
 
 @Component({
     selector: 'project',
@@ -139,7 +139,7 @@ import { DataService, Projet } from 'src/app/core/data.service';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectComponent {
+export class ProjectComponent implements OnInit {
     private readonly projectService = inject(DataService);
     private readonly route = inject(ActivatedRoute);
     private readonly router = inject(Router);
