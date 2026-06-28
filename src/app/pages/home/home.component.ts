@@ -2,8 +2,8 @@ import { DataService } from './../../core/data.service';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { AboutUsComponent } from 'src/app/components/about-us.component';
-import { SkillsComponent } from 'src/app/components/skills.component';
+import { AboutUsComponent } from '../../components/about-us.component';
+import { SkillsComponent } from '../../components/skills.component';
 
 @Component({
     selector: 'home',
