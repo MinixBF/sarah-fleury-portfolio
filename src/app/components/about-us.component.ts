@@ -44,7 +44,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
                     <div class="flex flex-col items-center">
                         <img
                             src="assets/me.jpg"
-                            class="rounded-lg object-cover sm:w-[80em]"
+                            class="rounded-lg border-2 border-bancha-700 object-cover sm:w-[80em]"
                             alt="Sarah Fleury portrait" />
                     </div>
                 </div>
