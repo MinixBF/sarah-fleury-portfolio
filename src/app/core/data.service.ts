@@ -228,16 +228,141 @@ export class DataService {
         //     ],
         // },
         {
+            id: 'damremont',
+            titleFrontPage: 'Damremont',
+            title: 'Damremont',
+            description:
+                'Cet appartement, initialement sombre et marqué par un style d’une autre époque, nécessitait une transformation pour répondre aux besoins d’une vie de famille moderne. Afin de rendre l’espace plus agréable et fonctionnel, nous avons proposé un plan traversant qui favorise un espace de vie à la fois spacieux et lumineux.<br/><br/>Nous avons conservé le petit dégagement qui dessert la zone dédiée aux enfants, comprenant une chambre, une salle de bain et des WC. De l’autre côté, nous avons aménagé une vaste suite parentale, offrant ainsi un équilibre harmonieux entre les espaces privés et communs.<br/><br/>J’ai suivi ce projet de la phase esquisse jusqu’à la fin de chantier.',
+            shortDesc: "Rénovation complète d'un appartement de 130m²",
+            credits:
+                'Fait pour l’agence Camille Hermand Architectures et photos de Jeanne Perrotte',
+            leftTitle: 'Existant',
+            rightTitle: 'Projet',
+            nextProject: 'jeuneurs',
+            previousProject: 'vienne',
+            imagePath: 'assets/projects/damremont/',
+            imageGridPath: 'assets/projects/damremont/grid/',
+            imagesGrid: [
+                {
+                    path: 'entree.webp',
+                    alt: 'Entrée avec claustra en bois',
+                },
+                {
+                    path: 'cuisine.webp',
+                    alt: 'Cuisine avec îlot en marbre',
+                },
+                {
+                    path: 'salle_a_manger.webp',
+                    alt: 'Salle à manger et bibliothèque sur mesure',
+                    class: 'md:col-span-6',
+                },
+                {
+                    path: 'salle_a_manger_biblio.webp',
+                    alt: 'Bibliothèque de la salle à manger',
+                    class: 'md:col-span-2',
+                },
+                {
+                    path: 'couloir.webp',
+                    alt: 'Couloir',
+                    class: 'md:col-span-2',
+                },
+                {
+                    path: 'chambre_parent.webp',
+                    alt: 'Chambre parentale',
+                    class: 'md:col-span-2',
+                },
+                {
+                    path: 'verriere.webp',
+                    alt: 'Verrière en verre cannelé',
+                },
+                {
+                    path: 'sdb_parent.webp',
+                    alt: 'Salle de bain parentale',
+                },
+                {
+                    path: 'chambre_enfant.webp',
+                    alt: 'Chambre enfant',
+                },
+                {
+                    path: 'sdb_enfant.webp',
+                    alt: 'Salle de bain enfant',
+                },
+            ],
+        },
+        {
+            id: 'neuilly',
+            titleFrontPage: 'Neuilly',
+            title: 'Neuilly',
+            description:
+                'Les propriétaires souhaitaient surélever leur maison d’un étage afin de créer un nouvel espace de vie, baigné de lumière et ouvert sur une grande terrasse. Ce projet a également été l’occasion de repenser le dernier étage existant, dédié à la suite parentale.<br/><br/>J’ai participé au suivi de chantier en collaboration avec l’architecte en charge du projet, tout en accompagnant les clients dans leurs choix esthétiques et leurs finitions intérieures : sélection des matériaux, détails des menuiseries et choix des teintes de peinture.',
+            shortDesc:
+                "Surélévation et rénovation d'une maison de ville de 170 m²",
+            credits:
+                'Fait pour l’agence Camille Hermand Architectures et photos de Jeanne Perrotte',
+            leftTitle: 'R+2',
+            rightTitle: 'R+3',
+            nextProject: 'jeuneurs',
+            previousProject: 'vienne',
+            imagePath: 'assets/projects/neuilly/',
+            imageGridPath: 'assets/projects/neuilly/grid/',
+            imagesGrid: [
+                {
+                    path: 'salon.webp',
+                    alt: 'Salon avec banquette et bibliothèque en noyer',
+                },
+                {
+                    path: 'salon_2.webp',
+                    alt: 'Salon',
+                },
+                {
+                    path: 'terrasse.webp',
+                    alt: 'Terrasse',
+                    class: 'md:col-span-6',
+                },
+                {
+                    path: 'cuisine.webp',
+                    alt: 'Cuisine',
+                    class: 'md:col-span-2',
+                },
+                {
+                    path: 'escalier.webp',
+                    alt: 'Dégagement et escalier',
+                    class: 'md:col-span-2',
+                },
+                {
+                    path: 'coin_salon.webp',
+                    alt: 'Coin salon',
+                    class: 'md:col-span-2',
+                },
+                {
+                    path: 'chambre.webp',
+                    alt: 'Chambre',
+                },
+                {
+                    path: 'sdb_detail.webp',
+                    alt: 'Détail de la salle de bain',
+                },
+                {
+                    path: 'sdb.webp',
+                    alt: 'Salle de bain',
+                    class: 'md:col-span-4',
+                },
+                {
+                    path: 'douche.webp',
+                    alt: 'Douche en mosaïque',
+                    class: 'md:col-span-2',
+                },
+            ],
+        },
+        {
             id: 'amelot',
             titleFrontPage: 'Amelot',
-            title: 'Amelot - en cours',
-            inProgress: true,
+            title: 'Amelot',
             description:
                 'Dans le cadre de ce projet, notre cliente a eu l’opportunité de racheter les combles situées au-dessus de son appartement, ce qui lui a permis de profiter pleinement de l’espace disponible. Les poutres apparentes et les volumes généreux sous plafond apportent un charme indéniable à l’ensemble de l’appartement.<br/><br/>Concernant l’aménagement, nous avons modifié le cloisonnement afin de créer une cuisine séparée, entièrement équipée, une salle de douche spacieuse, ainsi qu’une mezzanine destinée à un couchage d’appoint, venant compléter la chambre principale.',
             shortDesc:
                 "Rénovation complète d'un appartement de 50m² avec récupération des combles",
-            credits:
-                'Fait pour l’agence Camille Hermand Architectures - projet en cours de finition',
+            credits: 'Fait pour l’agence Camille Hermand Architectures',
             leftTitle: 'Existant',
             rightTitle: 'Projet',
             nextProject: 'jeuneurs',
@@ -290,144 +415,6 @@ export class DataService {
                 },
                 {
                     path: '10_existant.webp',
-                    alt: 'Existant',
-                    class: 'md:col-span-2',
-                },
-            ],
-        },
-        {
-            id: 'damremont',
-            titleFrontPage: 'Damremont',
-            title: 'Damremont - en cours',
-            inProgress: true,
-            description:
-                'Cet appartement, initialement sombre et marqué par un style d’une autre époque, nécessitait une transformation pour répondre aux besoins d’une vie de famille moderne. Afin de rendre l’espace plus agréable et fonctionnel, nous avons proposé un plan traversant qui favorise un espace de vie à la fois spacieux et lumineux.<br/><br/>Nous avons conservé le petit dégagement qui dessert la zone dédiée aux enfants, comprenant une chambre, une salle de bain et des WC. De l’autre côté, nous avons aménagé une vaste suite parentale, offrant ainsi un équilibre harmonieux entre les espaces privés et communs.<br/><br/>J’ai suivi ce projet de la phase esquisse jusqu’à la fin de chantier.',
-            shortDesc: "Rénovation complète d'un appartement de 130m²",
-            credits:
-                'Fait pour l’agence Camille Hermand Architectures - projet en cours de finition',
-            leftTitle: 'Existant',
-            rightTitle: 'Projet',
-            nextProject: 'jeuneurs',
-            previousProject: 'vienne',
-            imagePath: 'assets/projects/damremont/',
-            imageGridPath: 'assets/projects/damremont/grid/',
-            imagesGrid: [
-                {
-                    path: '01_fin_chantier.webp',
-                    alt: 'Bibliothèque',
-                },
-                {
-                    path: '02_fin_chantier.webp',
-                    alt: 'Bibliothèque',
-                },
-                {
-                    path: '02b_fin_chantier.webp',
-                    alt: 'Cuisine',
-                },
-                {
-                    path: '03_fin_chantier.webp',
-                    alt: 'Chambre parent',
-                },
-                {
-                    path: '04_fin_chantier.webp',
-                    alt: 'Chambre parent',
-                },
-                {
-                    path: '05_fin_chantier.webp',
-                    alt: 'Chambre enfant',
-                },
-                {
-                    path: '06_pendant.webp',
-                    alt: 'Chantier',
-                    title: 'Aperçu du chantier',
-                },
-                {
-                    path: '07_pendant.webp',
-                    alt: 'Chantier',
-                },
-                {
-                    path: '08_existant.webp',
-                    alt: 'Existant',
-                    class: 'md:col-span-2',
-                    title: 'Existant',
-                },
-                {
-                    path: '09_existant.webp',
-                    alt: 'Existant',
-                    class: 'md:col-span-2',
-                },
-                {
-                    path: '10_existant.webp',
-                    alt: 'Existant',
-                    class: 'md:col-span-2',
-                },
-            ],
-        },
-        {
-            id: 'neuilly',
-            titleFrontPage: 'Neuilly',
-            title: 'Neuilly - en cours',
-            inProgress: true,
-            description:
-                'Cet appartement, initialement sombre et marqué par un style d’une autre époque, nécessitait une transformation pour répondre aux besoins d’une vie de famille moderne. Afin de rendre l’espace plus agréable et fonctionnel, nous avons proposé un plan traversant qui favorise un espace de vie à la fois spacieux et lumineux.<br/><br/>Nous avons conservé le petit dégagement qui dessert la zone dédiée aux enfants, comprenant une chambre, une salle de bain et des WC. De l’autre côté, nous avons aménagé une vaste suite parentale, offrant ainsi un équilibre harmonieux entre les espaces privés et communs.<br/><br/>J’ai suivi ce projet de la phase esquisse jusqu’à la fin de chantier.',
-            shortDesc: "Rénovation complète d'un appartement de 130m²",
-            credits:
-                'Fait pour l’agence Camille Hermand Architectures - projet en cours de finition',
-            leftTitle: 'R+2',
-            rightTitle: 'R+3',
-            nextProject: 'jeuneurs',
-            previousProject: 'vienne',
-            imagePath: 'assets/projects/neuilly/',
-            imageGridPath: 'assets/projects/neuilly/grid/',
-            imagesGrid: [
-                {
-                    path: '01_fin-de-chantier.webp',
-                    alt: 'SDD',
-                    class: 'md:col-span-2',
-                },
-                {
-                    path: '02_fin-de-chantier.webp',
-                    alt: 'Chambre parent',
-                    class: 'md:col-span-4',
-                },
-                {
-                    path: '03_fin-de-chantier.webp',
-                    alt: 'Terrasse',
-                },
-                {
-                    path: '03b_fin-de-chantier.webp',
-                    alt: 'Salon',
-                },
-                {
-                    path: '04_fin-de-chantier.webp',
-                    alt: 'Salon',
-                },
-                {
-                    path: '05_pendant.webp',
-                    alt: 'Extérieur',
-                },
-                {
-                    path: '06_pendant.webp',
-                    alt: 'Chantier',
-                    title: 'Aperçu du chantier',
-                },
-                {
-                    path: '07_pendant.webp',
-                    alt: 'Chantier',
-                },
-                {
-                    path: '07_existant.webp',
-                    alt: 'Existant',
-                    title: 'Existant',
-                    class: 'md:col-span-2',
-                },
-                {
-                    path: '08_existant.webp',
-                    alt: 'Existant',
-                    class: 'md:col-span-2',
-                },
-                {
-                    path: '09_existant.webp',
                     alt: 'Existant',
                     class: 'md:col-span-2',
                 },

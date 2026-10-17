@@ -16,7 +16,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
                 </div>
                 <div>
                     <div
-                        class="grid-gap-16 grid cursor-pointer auto-cols-[minmax(300px,1fr)] grid-flow-col grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 overflow-x-auto pb-4 md:gap-8 xl:grid-cols-5">
+                        class="grid-gap-16 grid cursor-pointer auto-cols-[minmax(300px,1fr)] grid-flow-col grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 overflow-x-auto pb-4 md:gap-8 xl:grid-cols-4">
                         @for (item of skills; track $index) {
                             <div
                                 class="group flex flex-col items-start justify-between gap-3 rounded-lg border-2 border-bancha-100 bg-white p-8 shadow-md dark:bg-gray-900"
@@ -86,11 +86,30 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 export class SkillsComponent {
     skills: Skill[] = [
         {
+            title: 'Suivi de chantier',
+            description:
+                'Il s’agit d’un moment d’échange primordial avec les entreprises et les clients. C’est également très formateur.',
+            icon: 'fas fa-paint-brush',
+            selected: true,
+            imagesPath: 'assets/skills/worksite-supervision/',
+            gridClass: 'grid grid-cols-1 md:grid-cols-4',
+            imagesGrid: [
+                // Si possible une photo en pleine largeur avec une photo en paysage
+                { path: '1.webp', class: '' },
+                { path: '2.webp', class: '' },
+                { path: '3.webp', class: '' },
+                { path: '4.webp', class: '' },
+                { path: '5.webp', class: '' },
+                { path: '6.webp', class: '' },
+                { path: '7.webp', class: '' },
+            ],
+        },
+        {
             title: 'SketchUp V-Ray',
             description:
                 'Réaliser des visuels les plus réalistes possibles me passionnent. En particulier, travailler les lumières et les textures.',
             icon: 'fas fa-paint-brush',
-            selected: true,
+            selected: false,
             imagesPath: '/assets/skills/sketchup-vray/',
             gridClass: 'grid grid-cols-1 md:grid-rows-5 md:grid-cols-4',
             imagesGrid: [
@@ -141,42 +160,23 @@ export class SkillsComponent {
                 // biblio / cuisine
             ],
         },
-        {
-            title: 'Suivi de chantier',
-            description:
-                'Il s’agit d’un moment d’échange primordial avec les entreprises et les clients. C’est également très formateur.',
-            icon: 'fas fa-paint-brush',
-            selected: false,
-            imagesPath: 'assets/skills/worksite-supervision/',
-            gridClass: 'grid grid-cols-1 md:grid-cols-4',
-            imagesGrid: [
-                // Si possible une photo en pleine largeur avec une photo en paysage
-                { path: '1.webp', class: '' },
-                { path: '2.webp', class: '' },
-                { path: '3.webp', class: '' },
-                { path: '4.webp', class: '' },
-                { path: '5.webp', class: '' },
-                { path: '6.webp', class: '' },
-                { path: '7.webp', class: '' },
-            ],
-        },
-        {
-            title: 'Moodboard',
-            description:
-                'Élaborer un moodboard permet de donner vie aux espaces que l’on dessine en leur apportant de la matière.',
-            icon: 'fas fa-paint-brush',
-            selected: false,
-            imagesPath: 'assets/skills/moodboard/',
-            gridClass: 'grid grid-cols-1 md:grid-rows-2 md:grid-cols-2',
-            imagesGrid: [
-                // Mettre la photo 6 en pleine largeur
-                { path: 'planche_1.webp', class: 'md:row-span-1' },
-                { path: '4.webp', class: '' },
-                { path: '5.webp', class: '' },
-                { path: '6.webp', class: '' },
-                { path: 'ambiance.webp', class: 'md:col-span-2' },
-            ],
-        },
+        // {
+        //     title: 'Moodboard',
+        //     description:
+        //         'Élaborer un moodboard permet de donner vie aux espaces que l’on dessine en leur apportant de la matière.',
+        //     icon: 'fas fa-paint-brush',
+        //     selected: false,
+        //     imagesPath: 'assets/skills/moodboard/',
+        //     gridClass: 'grid grid-cols-1 md:grid-rows-2 md:grid-cols-2',
+        //     imagesGrid: [
+        //         // Mettre la photo 6 en pleine largeur
+        //         { path: 'planche_1.webp', class: 'md:row-span-1' },
+        //         { path: '4.webp', class: '' },
+        //         { path: '5.webp', class: '' },
+        //         { path: '6.webp', class: '' },
+        //         { path: 'ambiance.webp', class: 'md:col-span-2' },
+        //     ],
+        // },
         {
             title: 'Photoshop',
             description:
